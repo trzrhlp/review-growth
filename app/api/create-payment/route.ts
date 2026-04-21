@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const PLAN_PRICES_USD = {
-  Starter: 49,
-  Growth: 149,
-  Pro: 349,
+  Starter: 50,
+  Growth: 99,
+  Pro: 199,
 } as const;
 
 type PlanName = keyof typeof PLAN_PRICES_USD;

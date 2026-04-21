@@ -3,30 +3,39 @@ import { whatsappHref } from "@/lib/contact";
 
 const plans = [
   {
-    name: "Starter",
-    price: "$49",
-    description: "For solo operators building a repeatable review habit.",
-    features: ["100 review requests", "Email and SMS templates", "Basic reporting"],
+    name: "Starter Pack",
+    planKey: "Starter",
+    price: "$50",
+    description: "10 Google Business Profile reviews for businesses testing a smaller launch.",
+    features: [
+      "10 reviews",
+      "Clear starter option for smaller campaigns",
+      "Direct WhatsApp handoff after checkout",
+    ],
   },
   {
-    name: "Growth",
-    price: "$149",
-    description: "For growing teams that need automation and visibility.",
+    name: "Growth Pack",
+    planKey: "Growth",
+    price: "$99",
+    description:
+      "20 Google My Business reviews for teams that want stronger month-to-month momentum.",
     features: [
-      "500 review requests",
-      "Automated reminder flows",
-      "Team inbox and analytics",
+      "20 reviews",
+      "Balanced package for steady review growth",
+      "Designed for local reputation campaigns",
     ],
     featured: true,
   },
   {
-    name: "Pro",
-    price: "$349",
-    description: "For multi-location brands scaling reputation programs.",
+    name: "Pro Pack",
+    planKey: "Pro",
+    price: "$199",
+    description:
+      "50 GMB reviews for businesses that need the strongest package and broader visibility support.",
     features: [
-      "Unlimited review requests",
-      "Multi-location dashboards",
-      "Priority onboarding",
+      "50 reviews",
+      "Best fit for aggressive local trust goals",
+      "Built for higher-volume review growth",
     ],
   },
 ];
@@ -81,9 +90,7 @@ export default function Pricing() {
               <span className="text-5xl font-semibold tracking-tight text-zinc-950">
                 {plan.price}
               </span>
-              <span className="pb-2 text-sm font-medium text-zinc-500">
-                /month
-              </span>
+              <span className="pb-2 text-sm font-medium text-zinc-500">USD</span>
             </div>
 
             <ul className="mt-8 space-y-4 text-sm text-zinc-700">
@@ -95,9 +102,9 @@ export default function Pricing() {
               ))}
             </ul>
 
-            <div className="flex gap-3 mt-8">
+            <div className="mt-8 flex flex-row gap-3">
               <Link
-                href={getStartOrderHref(plan.name)}
+                href={getStartOrderHref(plan.planKey)}
                 className="inline-flex h-12 flex-1 items-center justify-center rounded-lg bg-zinc-950 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2"
               >
                 Buy Now
@@ -106,7 +113,7 @@ export default function Pricing() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Contact us on WhatsApp about the ${plan.name} plan`}
+                aria-label={`Contact us on WhatsApp about the ${plan.name}`}
                 className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#25D366] text-white shadow-sm transition hover:bg-[#20bd5a] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
               >
                 <svg

@@ -13,7 +13,8 @@ export default function Hero() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 lg:mx-0">
             Improve trust, local review visibility, and customer confidence
-            with a structured, location-aware feedback strategy.
+            with a structured, location-aware strategy for GMB reviews, Google
+            My Business reviews, and Google Business Profile reviews.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
             <Button href="/start-order">Get Started</Button>

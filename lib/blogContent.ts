@@ -8,6 +8,7 @@ export const blogPosts = {
         heading: "Introduction",
         paragraphs: [
           "Learning how to get Google reviews starts with a simple idea: make the request easy, timely, and connected to a real customer experience. Many businesses wait until they badly need reviews before they ask, which creates uneven activity and unnecessary pressure. A better approach is to build review collection into the normal customer journey.",
+          "Many businesses still search for GMB reviews even though Google My Business is now called Google Business Profile. The terminology changed, but the core objective is still to earn readable, trustworthy Google Business Profile reviews that help local customers choose with confidence.",
           "Google reviews matter because they sit close to the buying decision. A person searching for a local service may compare ratings, read recent comments, check photos, and decide who to contact in a few minutes. The profile with fresh, specific reviews usually feels more trustworthy than one with old or generic feedback.",
           "The goal is not to pressure every customer. The goal is to identify the right moments, give customers a clear path, and create a routine your team can repeat. When that process is supported by service pages, city pages, and a focused start-order path, review growth becomes part of your larger SEO and conversion system.",
         ],
@@ -104,6 +105,7 @@ export const blogPosts = {
         heading: "Introduction",
         paragraphs: [
           "Increasing Google reviews is easier when you stop treating reviews as an afterthought. Reviews are a conversion asset, a local SEO signal, and a customer feedback channel. They help prospects understand whether your business is reliable before they speak with your team.",
+          "For some teams, these are still called Google My Business reviews or GMB reviews. The newer label is Google Business Profile reviews, but the operational work is the same: earn recent, specific feedback that supports local trust.",
           "A strong review profile usually grows from repeated small actions. You ask at the right time, make the link easy to use, respond to feedback, and keep the profile active. Over time, those actions create a public record of customer experience.",
           "The challenge is consistency. Owners and teams get busy, customers forget, and review requests fall through the cracks. That is why a defined review growth workflow can outperform a casual approach, especially for businesses competing in busy city searches.",
         ],

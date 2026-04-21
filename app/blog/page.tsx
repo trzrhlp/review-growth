@@ -49,6 +49,11 @@ export default function BlogIndexPage() {
         <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
           Google review growth guides for local businesses.
         </h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">
+          Read practical guidance for GMB reviews, Google My Business reviews,
+          and Google Business Profile reviews without losing the thread between
+          strategy, pricing, and the next action.
+        </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {posts.map((post) => (
             <Link

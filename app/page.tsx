@@ -22,7 +22,7 @@ const howItWorks = [
   {
     title: "Share your details",
     description:
-      "Share your Google Business Profile link, location focus, and customer feedback priorities.",
+      "Share your Google Business Profile link, location focus, and the customer feedback priorities behind your Google Business Profile reviews.",
     icon: "02",
   },
   {
@@ -88,7 +88,10 @@ export default function Home() {
             <p className="mt-5 text-lg leading-8 text-zinc-600">
               Local Reviews Boost focuses on review growth, reputation
               management, and local review visibility that help businesses earn
-              confidence where customers are actively comparing options.
+              confidence where customers are actively comparing options. Many
+              owners still describe this work as GMB reviews or Google My
+              Business reviews, even though the current profile name is Google
+              Business Profile.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">

@@ -13,7 +13,7 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
-  business: string;
+  businessNameOrGoogleMapsLink: string;
 };
 
 export default function OrderForm({ selectedPlan }: OrderFormProps) {
@@ -21,14 +21,15 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
     name: "",
     email: "",
     phone: "",
-    business: "",
+    businessNameOrGoogleMapsLink: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isFormComplete =
     formData.name.trim().length > 0 &&
     formData.email.trim().length > 0 &&
-    formData.phone.trim().length > 0;
+    formData.phone.trim().length > 0 &&
+    formData.businessNameOrGoogleMapsLink.trim().length > 0;
 
   function updateField(field: keyof FormData, value: string) {
     setFormData((currentData) => ({
@@ -48,7 +49,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
 
     const message = [
       `Name: ${formData.name.trim()}`,
-      `Business: ${formData.business.trim()}`,
+      `Business Name or Google Maps Link: ${formData.businessNameOrGoogleMapsLink.trim()}`,
       `Plan: ${selectedPlan}`,
       `Email: ${formData.email.trim()}`,
       `Phone: ${formData.phone.trim()}`,
@@ -122,18 +123,23 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
 
       <div>
         <label
-          htmlFor="business"
+          htmlFor="businessNameOrGoogleMapsLink"
           className="block text-sm font-semibold text-zinc-900"
         >
-          Business Name
+          Business Name or Google Maps Link
         </label>
         <input
-          id="business"
-          name="business"
+          id="businessNameOrGoogleMapsLink"
+          name="businessNameOrGoogleMapsLink"
           type="text"
           autoComplete="organization"
-          value={formData.business}
-          onChange={(event) => updateField("business", event.target.value)}
+          required
+          minLength={2}
+          placeholder="e.g. ABC Cafe or https://maps.google.com/..."
+          value={formData.businessNameOrGoogleMapsLink}
+          onChange={(event) =>
+            updateField("businessNameOrGoogleMapsLink", event.target.value)
+          }
           className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>

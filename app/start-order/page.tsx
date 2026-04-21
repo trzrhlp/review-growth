@@ -4,6 +4,11 @@ import OrderForm from "./OrderForm";
 
 const planNames = ["Starter", "Growth", "Pro"] as const;
 const defaultPlan = planNames[0];
+const planLabels: Record<(typeof planNames)[number], string> = {
+  Starter: "Starter Pack",
+  Growth: "Growth Pack",
+  Pro: "Pro Pack",
+};
 
 type StartOrderPageProps = {
   searchParams?: {
@@ -30,6 +35,9 @@ function getSelectedPlan(plan?: string) {
 
 export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
   const selectedPlan = getSelectedPlan(searchParams?.plan);
+  const selectedPlanLabel = planNames.includes(selectedPlan as (typeof planNames)[number])
+    ? planLabels[selectedPlan as (typeof planNames)[number]]
+    : selectedPlan;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-6 py-16 lg:px-8">
@@ -38,7 +46,7 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-300">
             Selected plan
           </p>
-          <p className="mt-1 text-2xl font-semibold">{selectedPlan}</p>
+          <p className="mt-1 text-2xl font-semibold">{selectedPlanLabel}</p>
         </div>
 
         <h1 className="mt-8 text-center text-3xl font-semibold text-zinc-950 sm:text-4xl">
@@ -57,7 +65,7 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
           </a>
         </p>
 
-        <OrderForm selectedPlan={selectedPlan} />
+        <OrderForm selectedPlan={selectedPlanLabel} />
       </section>
     </div>
   );

@@ -3,13 +3,13 @@ export const servicePages = {
     eyebrow: "Google review growth service",
     title: "Get More Google Reviews",
     intro:
-      "Getting more Google reviews is not only about asking more people. The best results come from a consistent process, clear timing, and review content that reflects real customer experience.",
+      "Getting more Google reviews is not only about asking more people. The best results come from a consistent process, clear timing, and review content that reflects real customer experience across Google Business Profile reviews and older Google My Business terminology.",
     sections: [
       {
         heading: "Introduction",
         body: [
           "A strong Google review profile can make a local business easier to trust before a customer ever calls, books, or visits. When people compare two similar companies, the business with recent, detailed reviews often feels like the safer choice. That is why review growth needs to be treated as a business system rather than a one-time campaign.",
-          "Local Reviews Boost helps companies build that system with targeted, location-based strategies. Instead of chasing sudden spikes, the service focuses on gradual growth, relevant messaging, and a clear onboarding process. The goal is to help your profile look active and credible while supporting the way real buyers research local services.",
+          "Local Reviews Boost helps companies build that system with targeted, location-based strategies. Instead of chasing sudden spikes, the service focuses on gradual growth, relevant messaging, and a clear onboarding process. The goal is to help your profile look active and credible while supporting the way real buyers research local services, whether they search for GMB reviews, Google My Business reviews, or Google Business Profile reviews.",
         ],
       },
       {
@@ -31,7 +31,7 @@ export const servicePages = {
         heading: "How service works",
         body: [
           "The process begins with a plan selection and a short intake form. You share your business name, contact details, Google Maps link, and the plan that fits your current goal. From there, the program can be shaped around your market, category, and preferred pace.",
-          "Activity is paced gradually because review growth should look steady and realistic. Sudden bursts are rarely the best long-term signal. A measured approach helps your profile stay active while giving each stage of the plan enough time to settle. You can start with a smaller plan and move into the Growth plan when you want stronger momentum.",
+          "Activity is paced gradually because review growth should look steady and realistic. Sudden bursts are rarely the best long-term signal. A measured approach helps your profile stay active while giving each stage of the plan enough time to settle. You can start with a smaller plan and move into the Growth Pack when you want stronger momentum.",
           "Internal links can help you continue researching before getting started. Start with the city pages for New York, London, and Sydney, or go directly to the start-order page when you are ready to launch.",
           "This structure matters because it turns a search visit into a clear next step. A visitor can land on a service page, understand why Google reviews influence local trust, compare pricing, and then continue into the onboarding flow without needing a separate sales call just to understand the basics. That simplicity is useful for business owners who want to act quickly.",
           "The service also works well alongside existing local SEO activity. If your business is already investing in location pages, map optimization, and profile updates, a more active review profile adds another layer of proof. Together, those signals can make the business easier to choose when competitors offer similar services at similar prices.",
@@ -66,7 +66,7 @@ export const servicePages = {
         heading: "Introduction",
         body: [
           "Every local business wants stronger visibility, but visibility without trust rarely converts. Google reviews help connect those two outcomes. They give searchers a fast way to judge quality, reliability, and customer experience before they make contact.",
-          "Local Reviews Boost supports businesses that want to increase Google reviews with a focused and practical system. The service is built around clear plans, location targeting, and support that keeps the process organized from the first conversation. It is designed for businesses that want a more credible profile without spammy copy or confusing tactics.",
+          "Local Reviews Boost supports businesses that want to increase Google reviews with a focused and practical system. The service is built around clear plans, location targeting, and support that keeps the process organized from the first conversation. It is designed for businesses that want a more credible profile without spammy copy or confusing tactics, whether the search starts with GMB reviews, Google My Business reviews, or Google Business Profile reviews.",
         ],
       },
       {
@@ -81,13 +81,13 @@ export const servicePages = {
         body: [
           "A review growth strategy can make your business look more active. Recent reviews show that customers are still engaging with you and that your reputation is not outdated. This is useful in competitive local categories where several companies may have similar websites and service claims.",
           "Increasing Google reviews can also support local SEO. Reviews are not the only ranking factor, but they contribute to the overall reputation picture. When combined with a complete Google Business Profile, accurate location pages, and consistent business information, reviews become part of a stronger local search foundation.",
-          "The service also helps owners avoid scattered execution. Instead of trying random tactics, you can follow a defined process, choose the Growth plan when you need more momentum, and direct visitors from pages like Chicago, Manchester, or Melbourne toward a clear next step.",
+          "The service also helps owners avoid scattered execution. Instead of trying random tactics, you can follow a defined process, choose the Growth Pack when you need more momentum, and direct visitors from pages like Chicago, Manchester, or Melbourne toward a clear next step.",
         ],
       },
       {
         heading: "How service works",
         body: [
-          "Choose a plan, submit your business details, and provide your Google Maps link. The program is then organized around your selected plan and location focus. If you are not sure where to begin, the Starter plan can help you test the process, while Growth is highlighted for businesses that want stronger visibility.",
+          "Choose a plan, submit your business details, and provide your Google Maps link. The program is then organized around your selected plan and location focus. If you are not sure where to begin, the Starter Pack can help you test the process, while the Growth Pack is highlighted for businesses that want stronger visibility.",
           "The pacing model is gradual. That matters because steady activity is usually more believable than a sudden rush of feedback. It also gives your business a cleaner path for tracking progress and adjusting future plans.",
           "You can use the internal service pages to compare options, review city-specific pages, and then move to the start-order page when you are ready. This creates a simple path for visitors who arrive through search and need enough context before committing.",
           "For small and midsize businesses, that structure is often the missing piece. They may understand that reviews matter, but they do not have a clean workflow that turns interest into action. Pricing, educational content, local pages, and the WhatsApp handoff solve that by making the next action obvious.",
@@ -183,6 +183,7 @@ export const servicePages = {
         heading: "Complete guide to Google My Business review service",
         body: [
           "Your Google Business Profile is often the first serious trust check a customer performs. Before they call, book, request directions, or visit your website, they scan the rating, review count, recent feedback, photos, business details, and responses. A Google My Business review service helps improve that reputation layer with a more organized system.",
+          "Many businesses still search with the older Google My Business or GMB reviews wording, but the live profile customers see today is the Google Business Profile. The practical goal is still the same: stronger, more believable review coverage.",
           "The service should not be treated as a shortcut around customer experience. Strong review growth works best when it supports a real business that already serves customers well. The strategy is to make feedback more visible, more consistent, and more connected to the locations where buyers search.",
           "For local SEO, reviews sit alongside relevance, distance, prominence, profile accuracy, landing pages, and engagement signals. They are not the only factor, but they can influence how searchers behave. A profile with recent, specific feedback may earn more clicks and calls because it answers trust questions quickly.",
           "A complete service also connects review growth to website structure. Service pages explain the offer, city pages build local relevance, blog posts answer research questions, and pricing gives visitors a clear conversion path. When these pieces link together, review growth becomes part of a wider local acquisition system.",
@@ -245,6 +246,7 @@ export const servicePages = {
         body: [
           "A Google review service should make reputation growth easier to manage without making the profile feel unnatural. Customers use reviews to judge whether a business is reliable, responsive, and worth contacting. That makes review strategy a practical growth channel, not just a vanity metric.",
           "Local Reviews Boost is built for businesses that want clear packages, focused support, and a more polished web experience around their review growth. The service pages, city pages, pricing section, and onboarding flow work together so visitors can understand the offer and take the next step quickly.",
+          "That is useful because search behavior is mixed. Some businesses still ask for GMB reviews or Google My Business reviews, while others use the current Google Business Profile reviews label. The service is written to meet that search intent naturally.",
         ],
       },
       {
@@ -266,7 +268,7 @@ export const servicePages = {
         heading: "How service works",
         body: [
           "The workflow is intentionally direct. Review the packages, choose the best fit, submit your business details, and include the Google Maps link for the business profile. The team can then use that information to prepare a campaign around the selected plan.",
-          "A gradual pacing approach helps keep growth realistic. The Growth package is highlighted because many businesses need enough momentum to make a visible difference while still avoiding an unnatural spike. Smaller businesses can start with Starter, while multi-location operators can move toward Pro.",
+          "A gradual pacing approach helps keep growth realistic. The Growth Pack is highlighted because many businesses need enough momentum to make a visible difference while still avoiding an unnatural spike. Smaller businesses can start with the Starter Pack, while multi-location operators can move toward the Pro Pack.",
           "Before getting started, you can read service pages such as get more Google reviews or increase Google reviews, then visit city pages for Houston, Birmingham, or Brisbane. When the fit is clear, the start-order page gives you a direct path to begin.",
           "This process is designed for conversion, not just information. A visitor should be able to understand the offer, review a package, and continue into the order step within a few minutes. That matters because local business owners often make buying decisions quickly once the path feels clear enough.",
           "The workflow also supports internal linking across the entire site. Blog posts educate visitors, service pages explain the offer, city pages add local context, and the intake page captures intent. That connected structure helps the site work as both a lead-generation system and a search traffic asset.",

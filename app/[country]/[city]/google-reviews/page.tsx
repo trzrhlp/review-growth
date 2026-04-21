@@ -424,6 +424,11 @@ export default function GoogleReviewsPage({ params }: PageProps) {
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-zinc-600">
             {profile.intro}
           </p>
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-zinc-500">
+            Many local teams still search for GMB reviews or Google My
+            Business reviews, but the same trust signals now live on your
+            Google Business Profile.
+          </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/start-order">Start Your Plan</Button>
             <Button href="/#pricing" variant="secondary">
@@ -535,8 +540,9 @@ export default function GoogleReviewsPage({ params }: PageProps) {
               <p>
                 Fresh reviews help Google profiles look current, trustworthy,
                 and relevant to the services customers are actively comparing.
-                They also give the sales journey more proof before the website
-                has to do all the persuasion.
+                Strong Google Business Profile reviews also give the sales
+                journey more proof before the website has to do all the
+                persuasion.
               </p>
             </div>
           </section>

@@ -171,6 +171,12 @@ export default function ArticlePage({
                 so visitors can move naturally from research to the right next
                 step.
               </p>
+              <p>
+                Businesses still use a mix of terms here. Some ask about GMB
+                reviews, others ask about Google My Business reviews, and newer
+                teams ask about Google Business Profile reviews. The underlying
+                trust and conversion goal is the same.
+              </p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               {serviceLinks.map((link) => (

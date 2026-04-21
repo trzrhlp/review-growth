@@ -10,7 +10,7 @@ export const defaultFaqs: FAQItem[] = [
   {
     question: "Is this safe?",
     answer:
-      "Yes, when review growth is handled as a customer-focused reputation strategy. The safest approach is to encourage genuine feedback, use realistic timing, and maintain a complete Google Business Profile.",
+      "Yes, when review growth is handled as a customer-focused reputation strategy. The safest approach is to encourage genuine feedback, use realistic timing, and maintain a complete Google Business Profile with clear business information.",
   },
   {
     question: "How long does setup take?",
@@ -25,7 +25,7 @@ export const defaultFaqs: FAQItem[] = [
   {
     question: "Can I customize my plan?",
     answer:
-      "Yes. You can share your business category, preferred location focus, Google Business Profile link, and service details so the strategy fits how customers actually choose your company.",
+      "Yes. You can share your business category, preferred location focus, Google Business Profile link, and service details so the strategy fits how customers actually choose your company. Many businesses still ask about GMB reviews or Google My Business reviews, and the plan can be tailored around that same Google Business Profile review goal.",
   },
 ];
 
