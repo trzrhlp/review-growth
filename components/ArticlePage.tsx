@@ -172,10 +172,11 @@ export default function ArticlePage({
                 step.
               </p>
               <p>
-                Businesses still use a mix of terms here. Some ask about GMB
-                reviews, others ask about Google My Business reviews, and newer
-                teams ask about Google Business Profile reviews. The underlying
-                trust and conversion goal is the same.
+                Businesses still use a mix of terms here. Many businesses still
+                search for GMB reviews, even though Google My Business is now
+                called Google Business Profile. Others ask about Google My
+                Business reviews or Google Business Profile reviews, but the
+                underlying trust and conversion goal is the same.
               </p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">

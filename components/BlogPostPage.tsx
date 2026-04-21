@@ -175,8 +175,10 @@ export default function BlogPostPage({
               <p>
                 Businesses researching this topic still use several names,
                 including GMB reviews, Google My Business reviews, and Google
-                Business Profile reviews. The guide keeps the language readable
-                while addressing the same local reputation need.
+                Business Profile reviews. Many businesses still search for GMB
+                reviews, even though Google My Business is now called Google
+                Business Profile. The guide keeps the language readable while
+                addressing the same local reputation need.
               </p>
             </div>
             <div className="mt-5 flex flex-wrap gap-3">

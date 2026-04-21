@@ -3,7 +3,7 @@ export const servicePages = {
     eyebrow: "Google review growth service",
     title: "Get More Google Reviews",
     intro:
-      "Getting more Google reviews is not only about asking more people. The best results come from a consistent process, clear timing, and review content that reflects real customer experience across Google Business Profile reviews and older Google My Business terminology.",
+      "Getting more Google reviews is not only about asking more people. The best results come from a consistent process, clear timing, and review content that reflects real customer experience across Google Business Profile reviews, Google My Business reviews, and the common GMB reviews shorthand.",
     sections: [
       {
         heading: "Introduction",
@@ -60,7 +60,7 @@ export const servicePages = {
     eyebrow: "Local reputation growth",
     title: "Increase Google Reviews",
     intro:
-      "Increasing Google reviews requires more than volume. Businesses need review growth that is gradual, useful for buyers, and aligned with the locations where customers search.",
+      "Increasing Google reviews requires more than volume. Businesses need review growth that is gradual, useful for buyers, and aligned with the locations where customers search for GMB reviews, Google My Business reviews, or Google Business Profile reviews.",
     sections: [
       {
         heading: "Introduction",
@@ -119,7 +119,7 @@ export const servicePages = {
     eyebrow: "Personalized review strategy",
     title: "Local Reviews Boost",
     intro:
-      "Personalized review growth plans are built around your business category, location, customer journey, and reputation goals instead of a generic one-size-fits-all campaign.",
+      "Personalized review growth plans are built around your business category, location, customer journey, and reputation goals instead of a generic one-size-fits-all campaign, whether businesses call that need GMB reviews, Google My Business reviews, or Google Business Profile reviews.",
     sections: [
       {
         heading: "What is a personalized review strategy?",
@@ -183,7 +183,7 @@ export const servicePages = {
         heading: "Complete guide to Google My Business review service",
         body: [
           "Your Google Business Profile is often the first serious trust check a customer performs. Before they call, book, request directions, or visit your website, they scan the rating, review count, recent feedback, photos, business details, and responses. A Google My Business review service helps improve that reputation layer with a more organized system.",
-          "Many businesses still search with the older Google My Business or GMB reviews wording, but the live profile customers see today is the Google Business Profile. The practical goal is still the same: stronger, more believable review coverage.",
+          "Many businesses still search for GMB reviews, even though Google My Business is now called Google Business Profile. The practical goal is still the same: stronger, more believable review coverage.",
           "The service should not be treated as a shortcut around customer experience. Strong review growth works best when it supports a real business that already serves customers well. The strategy is to make feedback more visible, more consistent, and more connected to the locations where buyers search.",
           "For local SEO, reviews sit alongside relevance, distance, prominence, profile accuracy, landing pages, and engagement signals. They are not the only factor, but they can influence how searchers behave. A profile with recent, specific feedback may earn more clicks and calls because it answers trust questions quickly.",
           "A complete service also connects review growth to website structure. Service pages explain the offer, city pages build local relevance, blog posts answer research questions, and pricing gives visitors a clear conversion path. When these pieces link together, review growth becomes part of a wider local acquisition system.",
@@ -239,7 +239,7 @@ export const servicePages = {
     eyebrow: "Review growth partner",
     title: "Google Review Service",
     intro:
-      "A professional Google review service gives businesses a repeatable way to strengthen reputation signals, support local SEO, and make prospects more comfortable choosing them.",
+      "A professional Google review service gives businesses a repeatable way to strengthen reputation signals, support local SEO, and make prospects more comfortable choosing them, whether they search for GMB reviews, Google My Business reviews, or Google Business Profile reviews.",
     sections: [
       {
         heading: "Introduction",

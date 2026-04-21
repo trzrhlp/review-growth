@@ -8,7 +8,7 @@ export const blogPosts = {
         heading: "Introduction",
         paragraphs: [
           "Learning how to get Google reviews starts with a simple idea: make the request easy, timely, and connected to a real customer experience. Many businesses wait until they badly need reviews before they ask, which creates uneven activity and unnecessary pressure. A better approach is to build review collection into the normal customer journey.",
-          "Many businesses still search for GMB reviews even though Google My Business is now called Google Business Profile. The terminology changed, but the core objective is still to earn readable, trustworthy Google Business Profile reviews that help local customers choose with confidence.",
+          "Many businesses still search for GMB reviews, even though Google My Business is now called Google Business Profile. The terminology changed, but the core objective is still to earn readable, trustworthy Google Business Profile reviews that help local customers choose with confidence.",
           "Google reviews matter because they sit close to the buying decision. A person searching for a local service may compare ratings, read recent comments, check photos, and decide who to contact in a few minutes. The profile with fresh, specific reviews usually feels more trustworthy than one with old or generic feedback.",
           "The goal is not to pressure every customer. The goal is to identify the right moments, give customers a clear path, and create a routine your team can repeat. When that process is supported by service pages, city pages, and a focused start-order path, review growth becomes part of your larger SEO and conversion system.",
         ],
@@ -204,6 +204,7 @@ export const blogPosts = {
         heading: "Introduction",
         paragraphs: [
           "Improving a Google rating is not only about getting more five-star reviews. It starts with improving the experience customers are reviewing. When service quality, communication, and follow-through are strong, positive feedback becomes easier to earn and easier to sustain.",
+          "Businesses may still describe those signals as GMB reviews or Google My Business reviews, but the current profile customers see is built around Google Business Profile reviews.",
           "A better rating can increase trust quickly. Searchers often use rating as a shortcut when comparing local businesses. A profile with a higher rating, recent comments, and professional responses can earn more clicks even before a visitor reaches your website.",
           "The right strategy combines operations and review growth. Fix repeated issues, ask satisfied customers at the right time, respond to every meaningful review, and build location-specific pages that support the markets you want to win.",
         ],

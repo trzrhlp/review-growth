@@ -91,7 +91,9 @@ export default function Home() {
               confidence where customers are actively comparing options. Many
               owners still describe this work as GMB reviews or Google My
               Business reviews, even though the current profile name is Google
-              Business Profile.
+              Business Profile. Many businesses still search for GMB reviews,
+              even though Google My Business is now called Google Business
+              Profile.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">

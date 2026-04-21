@@ -52,7 +52,9 @@ export default function BlogIndexPage() {
         <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">
           Read practical guidance for GMB reviews, Google My Business reviews,
           and Google Business Profile reviews without losing the thread between
-          strategy, pricing, and the next action.
+          strategy, pricing, and the next action. Many businesses still search
+          for GMB reviews, even though Google My Business is now called Google
+          Business Profile.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {posts.map((post) => (
@@ -117,6 +119,11 @@ export default function BlogIndexPage() {
                 the start-order page
               </Link>
               .
+            </p>
+            <p>
+              The related guides and service pages also reflect the language
+              businesses still use in search, including GMB reviews, Google My
+              Business reviews, and Google Business Profile reviews.
             </p>
           </div>
         </section>
