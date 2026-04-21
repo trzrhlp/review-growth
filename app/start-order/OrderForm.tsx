@@ -17,6 +17,7 @@ type FormData = {
 };
 
 export default function OrderForm({ selectedPlan }: OrderFormProps) {
+  const [plan, setPlan] = useState<PlanName>(selectedPlan);
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -64,7 +65,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          plan: selectedPlan,
+          plan,
           fullName: formData.fullName.trim(),
           email: formData.email.trim(),
           phone: formData.phone.trim(),
@@ -106,6 +107,34 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
 
   return (
     <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+      <div>
+        <label
+          htmlFor="plan"
+          className="block text-sm font-semibold text-zinc-900"
+        >
+          Plan
+        </label>
+        <div className="relative mt-2">
+          <select
+            id="plan"
+            name="plan"
+            value={plan}
+            onChange={(event) => setPlan(event.target.value as PlanName)}
+            className="w-full appearance-none rounded-lg border border-zinc-300 bg-white px-4 py-3 pr-10 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          >
+            <option value="Starter">Starter Pack</option>
+            <option value="Growth">Growth Pack</option>
+            <option value="Pro">Pro Pack</option>
+          </select>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-zinc-500"
+          >
+            ▾
+          </span>
+        </div>
+      </div>
+
       <div>
         <label
           htmlFor="fullName"
@@ -201,7 +230,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
       >
         {isSubmitting
           ? "Redirecting to secure payment..."
-          : `Continue to ${getPlanLabel(selectedPlan)} payment`}
+          : `Continue to ${getPlanLabel(plan)} payment`}
       </Button>
     </form>
   );
