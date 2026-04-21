@@ -1,13 +1,19 @@
 import ArticlePage from "@/components/ArticlePage";
 import { servicePages } from "@/lib/serviceContent";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Custom Google Reviews for Local Business Growth",
+export const metadata = buildMetadata({
+  title: "Local Reviews Boost | Personalized Review Growth",
   description:
-    "Build a custom Google reviews strategy with location targeting, gradual delivery, personalized review themes, FAQ content, and clear conversion support.",
-};
+    "Build a personalized Google review growth strategy with location targeting, customer feedback themes, FAQ content, and clear reputation support.",
+  path: "/custom-google-reviews",
+});
 
 export default function Page() {
-  return <ArticlePage {...servicePages.customGoogleReviews} />;
+  return (
+    <ArticlePage
+      {...servicePages.customGoogleReviews}
+      path="/custom-google-reviews"
+    />
+  );
 }

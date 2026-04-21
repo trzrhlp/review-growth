@@ -1,7 +1,5 @@
 import Link from "next/link";
-
-const whatsappHref =
-  "https://wa.me/919971194967?text=Hi%20I%20am%20interested%20in%20your%20services";
+import { whatsappHref } from "@/lib/contact";
 
 const plans = [
   {
@@ -45,11 +43,11 @@ export default function Pricing() {
           Pricing
         </p>
         <h2 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
-          Plans built for review growth.
+          Plans built for reputation growth.
         </h2>
         <p className="mt-5 text-lg leading-8 text-zinc-600">
           Start with the workflow you need today and upgrade as your locations,
-          teams, and review goals grow.
+          teams, and customer feedback goals grow.
         </p>
       </div>
 

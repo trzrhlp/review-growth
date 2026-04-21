@@ -9,7 +9,7 @@ export const servicePages = {
         heading: "Introduction",
         body: [
           "A strong Google review profile can make a local business easier to trust before a customer ever calls, books, or visits. When people compare two similar companies, the business with recent, detailed reviews often feels like the safer choice. That is why review growth needs to be treated as a business system rather than a one-time campaign.",
-          "Custom Google Reviews helps companies build that system with targeted, location-based strategies. Instead of chasing sudden spikes, the service focuses on gradual growth, relevant messaging, and a clear order process. The goal is to help your profile look active and credible while supporting the way real buyers research local services.",
+          "Local Reviews Boost helps companies build that system with targeted, location-based strategies. Instead of chasing sudden spikes, the service focuses on gradual growth, relevant messaging, and a clear onboarding process. The goal is to help your profile look active and credible while supporting the way real buyers research local services.",
         ],
       },
       {
@@ -30,10 +30,10 @@ export const servicePages = {
       {
         heading: "How service works",
         body: [
-          "The process begins with a plan selection and a short order form. You share your business name, contact details, Google Maps link, and the plan that fits your current goal. From there, the campaign can be reviewed around your market, category, and preferred pace.",
-          "Delivery is gradual because review growth should look steady and realistic. Sudden bursts are rarely the best long-term signal. A measured approach helps your profile stay active while giving each stage of the campaign enough time to settle. You can start with a smaller plan and move into the Growth plan when you want stronger momentum.",
-          "Internal links can help you continue researching before ordering. Start with the city pages for New York, London, and Sydney, or go directly to the start-order page when you are ready to launch.",
-          "This structure matters because it turns a search visit into a clear buying path. A visitor can land on a service page, understand why Google reviews influence local trust, compare pricing, and then continue into the order funnel without needing a separate sales call just to understand the basics. That simplicity is useful for business owners who want to act quickly.",
+          "The process begins with a plan selection and a short intake form. You share your business name, contact details, Google Maps link, and the plan that fits your current goal. From there, the program can be shaped around your market, category, and preferred pace.",
+          "Activity is paced gradually because review growth should look steady and realistic. Sudden bursts are rarely the best long-term signal. A measured approach helps your profile stay active while giving each stage of the plan enough time to settle. You can start with a smaller plan and move into the Growth plan when you want stronger momentum.",
+          "Internal links can help you continue researching before getting started. Start with the city pages for New York, London, and Sydney, or go directly to the start-order page when you are ready to launch.",
+          "This structure matters because it turns a search visit into a clear next step. A visitor can land on a service page, understand why Google reviews influence local trust, compare pricing, and then continue into the onboarding flow without needing a separate sales call just to understand the basics. That simplicity is useful for business owners who want to act quickly.",
           "The service also works well alongside existing local SEO activity. If your business is already investing in location pages, map optimization, and profile updates, a more active review profile adds another layer of proof. Together, those signals can make the business easier to choose when competitors offer similar services at similar prices.",
         ],
       },
@@ -47,8 +47,8 @@ export const servicePages = {
       {
         heading: "FAQ",
         body: [
-          "Businesses usually ask whether the process is safe, whether the campaign can be aligned with a specific city, how long delivery takes, and whether the order can be customized. Those are the right questions, because the success of review growth depends on pacing, realistic content themes, and a campaign that reflects the real business rather than a generic template.",
-          "The reusable FAQ on the page answers those points directly. It keeps the buying process simple for visitors who need reassurance before ordering and helps service pages, city pages, and blog content all lead into the same conversion path.",
+          "Businesses usually ask whether the process is safe, whether the plan can be aligned with a specific city, how long setup takes, and whether the approach can be customized. Those are the right questions, because the success of review growth depends on pacing, realistic content themes, and a program that reflects the real business rather than a generic template.",
+          "The reusable FAQ on the page answers those points directly. It keeps the planning process simple for visitors who need reassurance before getting started and helps service pages, city pages, and blog content all lead into the same next step.",
         ],
       },
     ],
@@ -66,7 +66,7 @@ export const servicePages = {
         heading: "Introduction",
         body: [
           "Every local business wants stronger visibility, but visibility without trust rarely converts. Google reviews help connect those two outcomes. They give searchers a fast way to judge quality, reliability, and customer experience before they make contact.",
-          "Custom Google Reviews supports businesses that want to increase Google reviews with a focused and practical system. The service is built around clear plans, location targeting, and support that keeps the process organized from the first order. It is designed for businesses that want a more credible profile without spammy copy or confusing tactics.",
+          "Local Reviews Boost supports businesses that want to increase Google reviews with a focused and practical system. The service is built around clear plans, location targeting, and support that keeps the process organized from the first conversation. It is designed for businesses that want a more credible profile without spammy copy or confusing tactics.",
         ],
       },
       {
@@ -81,16 +81,16 @@ export const servicePages = {
         body: [
           "A review growth strategy can make your business look more active. Recent reviews show that customers are still engaging with you and that your reputation is not outdated. This is useful in competitive local categories where several companies may have similar websites and service claims.",
           "Increasing Google reviews can also support local SEO. Reviews are not the only ranking factor, but they contribute to the overall reputation picture. When combined with a complete Google Business Profile, accurate location pages, and consistent business information, reviews become part of a stronger local search foundation.",
-          "The service also helps owners avoid scattered execution. Instead of trying random tactics, you can follow a defined order path, choose the Growth plan when you need more momentum, and direct visitors from pages like Chicago, Manchester, or Melbourne toward a clear conversion step.",
+          "The service also helps owners avoid scattered execution. Instead of trying random tactics, you can follow a defined process, choose the Growth plan when you need more momentum, and direct visitors from pages like Chicago, Manchester, or Melbourne toward a clear next step.",
         ],
       },
       {
         heading: "How service works",
         body: [
-          "Choose a plan, submit your business details, and provide your Google Maps link. The campaign is then organized around your selected package and location focus. If you are not sure where to begin, the Starter plan can help you test the process, while Growth is highlighted for businesses that want stronger visibility.",
-          "The delivery model is gradual. That pacing matters because steady activity is usually more believable than a sudden rush of feedback. It also gives your business a cleaner path for tracking progress and adjusting future campaigns.",
-          "You can use the internal service pages to compare options, review city-specific pages, and then move to the start-order page when you are ready. This creates a simple funnel for visitors who arrive through search and need enough context before committing.",
-          "For small and midsize businesses, that funnel is often the missing piece. They may understand that reviews matter, but they do not have a clean workflow that turns interest into action. Pricing, educational content, local pages, and the WhatsApp order step solve that by making the next action obvious.",
+          "Choose a plan, submit your business details, and provide your Google Maps link. The program is then organized around your selected plan and location focus. If you are not sure where to begin, the Starter plan can help you test the process, while Growth is highlighted for businesses that want stronger visibility.",
+          "The pacing model is gradual. That matters because steady activity is usually more believable than a sudden rush of feedback. It also gives your business a cleaner path for tracking progress and adjusting future plans.",
+          "You can use the internal service pages to compare options, review city-specific pages, and then move to the start-order page when you are ready. This creates a simple path for visitors who arrive through search and need enough context before committing.",
+          "For small and midsize businesses, that structure is often the missing piece. They may understand that reviews matter, but they do not have a clean workflow that turns interest into action. Pricing, educational content, local pages, and the WhatsApp handoff solve that by making the next action obvious.",
           "A review growth system also reduces the risk of inconsistency. When businesses only think about reviews during a slow month, the profile stays quiet for long periods. A planned campaign creates steadier momentum and gives the profile more recent activity for prospects to evaluate.",
         ],
       },
@@ -98,7 +98,7 @@ export const servicePages = {
         heading: "CTA",
         body: [
           "If you want to increase Google reviews without building a new system from scratch, start with a package that matches your current market and goals. Then use the order form to share your contact details and move the conversation into WhatsApp with the selected plan already filled in.",
-          "That direct handoff is useful for teams that want clarity quickly. Instead of chasing several calls or emails, you can begin with a concise order message and continue from there with a simpler sales process.",
+          "That direct handoff is useful for teams that want clarity quickly. Instead of chasing several calls or emails, you can begin with a concise WhatsApp message and continue from there with a simpler planning process.",
         ],
       },
       {
@@ -106,7 +106,7 @@ export const servicePages = {
         body: [
           "Most buyers want to know whether campaigns can be customized, whether review growth can be matched to a city, and how long the process usually takes. Those questions are answered in the reusable FAQ because they are part of the decision process on nearly every service page.",
           "The key point is that better review growth comes from a realistic plan. The campaign should fit the business, the market, and the timing expectations of local customers instead of forcing the same approach onto every company.",
-          "For that reason, the page is designed to move naturally into the order funnel. Visitors can read the service explanation, compare local pages, review FAQ answers, and then continue to WhatsApp with their selected package already included in the message.",
+          "For that reason, the page is designed to move naturally into the onboarding flow. Visitors can read the service explanation, compare local pages, review FAQ answers, and then continue to WhatsApp with their selected plan already included in the message.",
           "That combination of clarity and speed is useful for owners who already know reviews matter and simply need a structured way to move forward.",
         ],
       },
@@ -117,24 +117,24 @@ export const servicePages = {
   },
   customGoogleReviews: {
     eyebrow: "Personalized review strategy",
-    title: "Custom Google Reviews",
+    title: "Local Reviews Boost",
     intro:
-      "Custom Google reviews are planned review growth strategies built around your business category, location, customer journey, and reputation goals instead of a generic one-size-fits-all campaign.",
+      "Personalized review growth plans are built around your business category, location, customer journey, and reputation goals instead of a generic one-size-fits-all campaign.",
     sections: [
       {
-        heading: "What are custom Google reviews?",
+        heading: "What is a personalized review strategy?",
         body: [
-          "Custom Google reviews are not random comments or disconnected reputation tactics. A custom review strategy starts with the business itself: where it operates, what customers care about, how buyers compare local providers, and which trust signals need to improve before more people call, book, or visit. The goal is to make the review profile feel current, relevant, and useful for real prospects.",
-          "For a local service company, custom review planning may focus on response time, professionalism, project quality, and neighborhood relevance. For a clinic, it may focus on care, communication, appointment experience, and patient confidence. For a restaurant, salon, agency, gym, or repair company, the themes change again. That is why personalized review growth usually converts better than broad, generic messaging.",
-          "A good custom Google review campaign also considers pacing. Review activity should build gradually, with realistic timing and content themes that match the business. Sudden bursts can look unnatural and may not help long-term reputation. A measured plan gives your Google Business Profile a steadier path toward stronger trust.",
+          "A personalized review strategy is not random commentary or disconnected reputation tactics. It starts with the business itself: where it operates, what customers care about, how buyers compare local providers, and which trust signals need to improve before more people call, book, or visit. The goal is to make the review profile feel current, relevant, and useful for real prospects.",
+          "For a local service company, personalized review planning may focus on response time, professionalism, project quality, and neighborhood relevance. For a clinic, it may focus on care, communication, appointment experience, and patient confidence. For a restaurant, salon, agency, gym, or repair company, the themes change again. That is why personalized review growth usually converts better than broad, generic messaging.",
+          "A good review growth campaign also considers pacing. Review activity should build gradually, with realistic timing and content themes that match the business. Sudden bursts can look unnatural and may not help long-term reputation. A measured plan gives your Google Business Profile a steadier path toward stronger trust.",
         ],
       },
       {
         heading: "Why businesses need them",
         body: [
           "Customers rarely make decisions from a website alone. They search on Google, compare map results, scan ratings, read recent comments, and look for signals that a business is active and dependable. If your profile has few reviews, old reviews, or vague comments, it can lose attention even when your service is excellent.",
-          "Custom Google reviews help solve that gap by aligning review growth with how customers actually choose. A business in New York may need stronger neighborhood trust. A London company may need recent feedback in a competitive borough. A Sydney provider may need review themes that make it easier for high-intent buyers to understand quality before they enquire. Different markets need different emphasis.",
-          "Personalization also matters because every business has a different conversion problem. Some need more review volume. Some need more recent activity. Some need better customer detail. Some need review growth across multiple locations. Custom planning turns those needs into a focused campaign rather than treating review growth as a simple number.",
+          "A personalized review strategy helps solve that gap by aligning review growth with how customers actually choose. A business in New York may need stronger neighborhood trust. A London company may need recent feedback in a competitive borough. A Sydney provider may need review themes that make it easier for high-intent buyers to understand quality before they enquire. Different markets need different emphasis.",
+          "Personalization also matters because every business has a different conversion problem. Some need more review volume. Some need more recent activity. Some need better customer detail. Some need review growth across multiple locations. Personalized planning turns those needs into a focused campaign rather than treating review growth as a simple number.",
         ],
       },
       {
@@ -150,26 +150,26 @@ export const servicePages = {
         heading: "How it works",
         body: [
           "The process starts with your business information. You share your Google Business Profile link, business category, target city or service area, and the plan that matches your goal. That information shapes the campaign direction and helps avoid generic execution.",
-          "Next, the review growth plan is paced around realistic delivery. Gradual activity is important because reputation should look like a living customer signal, not a sudden artificial event. The campaign can focus on one city, several cities, or a broader local market depending on your needs.",
-          "The final step is conversion. Your website, service pages, blog guides, and city pages should all guide visitors toward the same action. Internal links to pricing, local pages, and service explainers help search visitors continue learning until they are ready to start an order or ask a question through WhatsApp.",
+          "Next, the review growth plan is paced realistically. Gradual activity is important because reputation should look like a living customer signal, not a sudden artificial event. The plan can focus on one city, several cities, or a broader local market depending on your needs.",
+          "The final step is alignment. Your website, service pages, blog guides, and city pages should all guide visitors toward the same action. Internal links to pricing, local pages, and service explainers help search visitors continue learning until they are ready to start their plan or ask a question through WhatsApp.",
         ],
       },
       {
         heading: "CTA",
         body: [
-          "If your Google Business Profile needs stronger trust, recent activity, or better local relevance, a custom review plan gives you a practical next step. Start with the pricing section, compare the Google My Business review service guide, or go directly to the order form when you are ready.",
+          "If your Google Business Profile needs stronger trust, recent activity, or better local relevance, a personalized review plan gives you a practical next step. Start with the pricing section, compare the Google My Business review service guide, or go directly to the order form when you are ready.",
           "The best time to improve reviews is before a slow month, a launch, a new location, or a major local SEO push. A steady campaign gives your business more proof before prospects start comparing you against stronger competitors.",
         ],
       },
       {
         heading: "FAQ",
         body: [
-          "Most businesses ask whether custom review growth is safe, how long it takes, and whether the content can match their location. The answer depends on using gradual pacing, customer-focused language, and a clear city strategy. A campaign should never feel disconnected from the business it supports.",
-          "Customization is especially useful for multi-location brands, local service companies, clinics, restaurants, agencies, and professional services because each market has its own competitive pressure. The reusable FAQ below answers the most common questions before you order.",
+          "Most businesses ask whether personalized review growth is safe, how long it takes, and whether the content can match their location. The answer depends on using gradual pacing, customer-focused language, and a clear city strategy. A campaign should never feel disconnected from the business it supports.",
+          "Customization is especially useful for multi-location brands, local service companies, clinics, restaurants, agencies, and professional services because each market has its own competitive pressure. The reusable FAQ below answers the most common questions before you get started.",
         ],
       },
     ],
-    ctaTitle: "Build a custom Google review growth plan.",
+    ctaTitle: "Build a personalized Google review growth plan.",
     ctaText:
       "Use personalized review strategy to support local trust, better profile activity, and stronger conversion from Google search.",
   },
@@ -212,13 +212,13 @@ export const servicePages = {
           "The first solution is a clear review growth plan. Choose the market, define the campaign goal, identify the customer themes that matter, and pace the work gradually. This gives the profile a realistic path forward instead of relying on occasional bursts.",
           "The second solution is location-based strategy. If you want to grow in London, the campaign should support London searches. If you want stronger results in Chicago, Sydney, or Manchester, the content and internal links should point users toward those local pages. This creates a more coherent local SEO structure.",
           "The third solution is conversion-focused design. Pricing buttons should be easy to use, WhatsApp support should be available without clutter, and internal links should help users move from education to action. A review service is most effective when the website makes the next step obvious.",
-          "The fourth solution is ongoing readability. Service pages, blog posts, and FAQs should explain the process in plain language. Visitors need to understand what the service does, why pacing matters, how customization works, and what information they need to provide before ordering.",
+          "The fourth solution is ongoing readability. Service pages, blog posts, and FAQs should explain the process in plain language. Visitors need to understand what the service does, why pacing matters, how customization works, and what information they need to provide before getting started.",
         ],
       },
       {
         heading: "CTA",
         body: [
-          "If your Google Business Profile is not helping you convert local search traffic, start with a structured review growth plan. Review pricing, read the custom Google reviews guide, compare city pages, and use the order form when your campaign details are ready.",
+          "If your Google Business Profile is not helping you convert local search traffic, start with a structured review growth plan. Review pricing, read the Local Reviews Boost guide, compare city pages, and use the order form when your campaign details are ready.",
           "A good campaign is practical: it focuses on your market, your customer journey, and your conversion goals. That makes it more useful than a generic push for review volume alone.",
         ],
       },
@@ -244,7 +244,7 @@ export const servicePages = {
         heading: "Introduction",
         body: [
           "A Google review service should make reputation growth easier to manage without making the profile feel unnatural. Customers use reviews to judge whether a business is reliable, responsive, and worth contacting. That makes review strategy a practical growth channel, not just a vanity metric.",
-          "Custom Google Reviews is built for businesses that want clear packages, focused delivery, and a more polished web experience around their review growth. The service pages, city pages, pricing section, and order flow work together so visitors can understand the offer and take the next step quickly.",
+          "Local Reviews Boost is built for businesses that want clear packages, focused support, and a more polished web experience around their review growth. The service pages, city pages, pricing section, and onboarding flow work together so visitors can understand the offer and take the next step quickly.",
         ],
       },
       {
@@ -265,25 +265,25 @@ export const servicePages = {
       {
         heading: "How service works",
         body: [
-          "The workflow is intentionally direct. Review the packages, choose the best fit, submit your order details, and include the Google Maps link for the business profile. The team can then use that information to prepare a campaign around the selected plan.",
-          "A gradual delivery approach helps keep growth realistic. The Growth package is highlighted because many businesses need enough momentum to make a visible difference while still avoiding an unnatural spike. Smaller businesses can start with Starter, while multi-location operators can move toward Pro.",
-          "Before ordering, you can read service pages such as get more Google reviews or increase Google reviews, then visit city pages for Houston, Birmingham, or Brisbane. When the fit is clear, the start-order page gives you a direct path to begin.",
+          "The workflow is intentionally direct. Review the packages, choose the best fit, submit your business details, and include the Google Maps link for the business profile. The team can then use that information to prepare a campaign around the selected plan.",
+          "A gradual pacing approach helps keep growth realistic. The Growth package is highlighted because many businesses need enough momentum to make a visible difference while still avoiding an unnatural spike. Smaller businesses can start with Starter, while multi-location operators can move toward Pro.",
+          "Before getting started, you can read service pages such as get more Google reviews or increase Google reviews, then visit city pages for Houston, Birmingham, or Brisbane. When the fit is clear, the start-order page gives you a direct path to begin.",
           "This process is designed for conversion, not just information. A visitor should be able to understand the offer, review a package, and continue into the order step within a few minutes. That matters because local business owners often make buying decisions quickly once the path feels clear enough.",
-          "The workflow also supports internal linking across the entire site. Blog posts educate visitors, service pages explain the offer, city pages add local context, and the order page captures intent. That connected structure helps the site work as both a lead-generation system and a search traffic asset.",
+          "The workflow also supports internal linking across the entire site. Blog posts educate visitors, service pages explain the offer, city pages add local context, and the intake page captures intent. That connected structure helps the site work as both a lead-generation system and a search traffic asset.",
         ],
       },
       {
         heading: "CTA",
         body: [
-          "If your business needs a stronger review profile and a simpler buying path, start with the pricing section and move into the order funnel. The order page collects the right details and sends them into WhatsApp in a format that keeps the discussion organized from the first message.",
+          "If your business needs a stronger review profile and a simpler next step, start with the pricing section and move into the onboarding flow. The intake page collects the right details and sends them into WhatsApp in a format that keeps the discussion organized from the first message.",
           "This is useful whether you want to improve trust in one city, support several target markets, or build more recent review activity before a larger SEO push. The key is to begin with a package that matches your current stage instead of waiting until the profile becomes a visible weakness.",
         ],
       },
       {
         heading: "FAQ",
         body: [
-          "Businesses typically ask four practical questions before they order: is the process safe, how long does delivery take, can campaigns be location-based, and can the order be customized? Those answers matter because reputation work should feel controlled and relevant, not vague.",
-          "The FAQ keeps those conversion questions close to the order path. That helps the page serve both search intent and buyer intent without forcing visitors to leave the page to find basic answers.",
+          "Businesses typically ask four practical questions before they get started: is the process safe, how long does setup take, can campaigns be location-based, and can the plan be customized? Those answers matter because reputation work should feel controlled and relevant, not vague.",
+          "The FAQ keeps those planning questions close to the next step. That helps the page serve both search intent and buyer intent without forcing visitors to leave the page to find basic answers.",
           "For businesses comparing several providers, this clarity is part of the value. A clear process, clear packages, and a clear next step reduce friction and make it easier to move from research into action while the buying intent is still strong.",
           "It also supports SEO by keeping useful, buyer-focused information on the page instead of sending visitors to several disconnected resources just to answer basic concerns.",
           "When those answers sit alongside pricing, city pages, and the order form, the page becomes more than an article. It becomes a practical lead-generation asset built to convert visitors who arrive through search.",
@@ -292,6 +292,6 @@ export const servicePages = {
     ],
     ctaTitle: "Use a Google review service built for local growth.",
     ctaText:
-      "Launch a review campaign with clear pricing, city-focused strategy, and direct support.",
+      "Launch a review growth plan with clear pricing, city-focused strategy, and direct support.",
   },
 } as const;

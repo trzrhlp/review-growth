@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import FAQ, { type FAQItem } from "@/components/FAQ";
 import { locationEntries } from "@/lib/locations";
@@ -16,10 +17,11 @@ type ArticlePageProps = {
   ctaTitle: string;
   ctaText: string;
   faqs?: readonly FAQItem[];
+  path?: string;
 };
 
 const serviceLinks = [
-  { name: "Custom Google Reviews", href: "/custom-google-reviews" },
+  { name: "Local Reviews Boost", href: "/custom-google-reviews" },
   {
     name: "Google My Business Review Service",
     href: "/google-my-business-review-service",
@@ -56,11 +58,19 @@ export default function ArticlePage({
   ctaTitle,
   ctaText,
   faqs,
+  path = "/",
 }: ArticlePageProps) {
   return (
     <div className="bg-white">
       <section className="border-b border-zinc-200 px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-4xl">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: title, path },
+            ]}
+            className="mb-6"
+          />
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
             {eyebrow}
           </p>
@@ -69,7 +79,7 @@ export default function ArticlePage({
           </h1>
           <p className="mt-6 text-xl leading-8 text-zinc-600">{intro}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/start-order">Start Order</Button>
+            <Button href="/start-order">Start Your Plan</Button>
             <Button href="/#pricing" variant="secondary">
               View Pricing
             </Button>
@@ -158,8 +168,8 @@ export default function ArticlePage({
                 >
                   {blogLinks[2].name}
                 </Link>{" "}
-                so visitors can move naturally from research to the right order
-                path.
+                so visitors can move naturally from research to the right next
+                step.
               </p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -189,7 +199,7 @@ export default function ArticlePage({
       <FAQ
         items={faqs}
         className="bg-zinc-50"
-        intro="Use these answers to plan a safer, more realistic review growth campaign before you order."
+        intro="Use these answers to plan a safer, more realistic review growth program before you get started."
       />
 
       <section className="px-6 pb-24 lg:px-8">
@@ -199,7 +209,7 @@ export default function ArticlePage({
             {ctaText}
           </p>
           <Button href="/start-order" variant="secondary" className="mt-8">
-            Get professional help
+            Improve Your Review Presence
           </Button>
         </div>
       </section>

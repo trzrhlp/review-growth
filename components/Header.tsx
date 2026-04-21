@@ -12,7 +12,7 @@ export default function Header() {
           href="/"
           className="text-lg font-semibold tracking-tight text-zinc-950 sm:text-xl"
         >
-          Custom Google Reviews
+          Local Reviews Boost
         </Link>
 
         <div className="flex items-center gap-5 sm:gap-8">

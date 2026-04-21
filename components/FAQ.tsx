@@ -1,3 +1,6 @@
+import JsonLd from "@/components/JsonLd";
+import { buildFaqSchema } from "@/lib/schema";
+
 export type FAQItem = {
   question: string;
   answer: string;
@@ -7,22 +10,22 @@ export const defaultFaqs: FAQItem[] = [
   {
     question: "Is this safe?",
     answer:
-      "Yes, when review growth is handled as a gradual, customer-focused reputation strategy. The safest approach is to use realistic timing, honest customer language, and a complete Google Business Profile rather than sudden spikes or copied content.",
+      "Yes, when review growth is handled as a customer-focused reputation strategy. The safest approach is to encourage genuine feedback, use realistic timing, and maintain a complete Google Business Profile.",
   },
   {
-    question: "How long does delivery take?",
+    question: "How long does setup take?",
     answer:
-      "Delivery depends on the plan, market, and review volume. Most campaigns are paced over several days or weeks so growth looks natural and gives your profile steady activity instead of a short burst.",
+      "Setup depends on the plan, market, and business details you share. Most programs are planned over days or weeks so review activity stays steady and aligned with normal customer engagement.",
   },
   {
     question: "Are reviews location-based?",
     answer:
-      "Yes. Campaigns can be planned around the city or service area you want to strengthen, which is useful for local businesses competing in Google Maps and city-specific searches.",
+      "Yes. Review growth programs can be planned around the city or service area you want to strengthen, which is useful for businesses competing in Google Maps and city-specific searches.",
   },
   {
-    question: "Can I customize orders?",
+    question: "Can I customize my plan?",
     answer:
-      "Yes. You can share your business category, preferred location focus, Google Business Profile link, and service details so the review strategy fits the way customers actually choose your company.",
+      "Yes. You can share your business category, preferred location focus, Google Business Profile link, and service details so the strategy fits how customers actually choose your company.",
   },
 ];
 
@@ -35,12 +38,13 @@ type FAQProps = {
 
 export default function FAQ({
   title = "Frequently asked questions",
-  intro = "Clear answers for businesses planning a Google review growth campaign.",
+  intro = "Clear answers for businesses planning a compliant review growth program.",
   items = defaultFaqs,
   className = "",
 }: FAQProps) {
   return (
     <section className={`px-6 py-20 lg:px-8 ${className}`.trim()}>
+      <JsonLd data={buildFaqSchema(items)} />
       <div className="mx-auto max-w-4xl">
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
           FAQ

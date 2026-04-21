@@ -6,14 +6,14 @@ export default function Hero() {
       <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-24">
         <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
           <p className="mb-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">
-            Location-based Google review growth
+            Review growth and reputation management
           </p>
           <h1 className="text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
-            Grow Your Google Reviews with Targeted, Location-Based Strategies
+            Strengthen Your Review Presence with Local Reputation Support
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 lg:mx-0">
-            Increase trust, visibility, and local rankings with gradual,
-            customized review growth.
+            Improve trust, local review visibility, and customer confidence
+            with a structured, location-aware feedback strategy.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
             <Button href="/start-order">Get Started</Button>
@@ -57,8 +57,8 @@ export default function Hero() {
             <div className="space-y-3">
               {[
                 ["Location targeting", "Campaign focus matched to your city", "Active"],
-                ["Gradual delivery", "Paced for natural review growth", "Planned"],
-                ["Support", "Order details reviewed before launch", "Ready"],
+                ["Review pacing", "Planned for steady, credible growth", "Planned"],
+                ["Support", "Plan details reviewed before launch", "Ready"],
               ].map(([title, detail, status]) => (
                 <div
                   key={title}

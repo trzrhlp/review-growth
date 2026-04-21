@@ -1,5 +1,4 @@
-const whatsappHref =
-  "https://wa.me/919971194967?text=Hi%20I%20need%20help%20with%20review%20services";
+import { whatsappHref } from "@/lib/contact";
 
 export default function WhatsAppButton() {
   return (

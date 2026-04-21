@@ -1,13 +1,19 @@
 import ArticlePage from "@/components/ArticlePage";
 import { servicePages } from "@/lib/serviceContent";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Get More Google Reviews for Local Business",
+export const metadata = buildMetadata({
+  title: "Get More Google Reviews | Local Reviews Boost",
   description:
     "Get more Google reviews with a gradual, location-based strategy built for trust, visibility, and local search growth.",
-};
+  path: "/get-more-google-reviews",
+});
 
 export default function Page() {
-  return <ArticlePage {...servicePages.getMoreGoogleReviews} />;
+  return (
+    <ArticlePage
+      {...servicePages.getMoreGoogleReviews}
+      path="/get-more-google-reviews"
+    />
+  );
 }

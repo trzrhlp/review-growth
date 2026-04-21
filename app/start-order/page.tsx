@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+import { supportEmail } from "@/lib/contact";
 import OrderForm from "./OrderForm";
 
 const planNames = ["Starter", "Growth", "Pro"] as const;
@@ -10,10 +11,12 @@ type StartOrderPageProps = {
   };
 };
 
-export const metadata: Metadata = {
-  title: "Complete Your Order",
-  description: "Complete your Review Growth order with your selected plan.",
-};
+export const metadata = buildMetadata({
+  title: "Start Order | Local Reviews Boost",
+  description:
+    "Start your Local Reviews Boost plan with your selected package and support details.",
+  path: "/start-order",
+});
 
 function getSelectedPlan(plan?: string) {
   if (!plan) {
@@ -39,10 +42,19 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
         </div>
 
         <h1 className="mt-8 text-center text-3xl font-semibold text-zinc-950 sm:text-4xl">
-          Complete Your Order
+          Start Your Plan
         </h1>
         <p className="mt-4 text-center text-base leading-7 text-zinc-600">
-          Share your details and continue on WhatsApp for fast setup support.
+          Share your details and continue on WhatsApp for onboarding guidance.
+        </p>
+        <p className="mt-2 text-center text-sm text-zinc-500">
+          Prefer email?{" "}
+          <a
+            href={`mailto:${supportEmail}`}
+            className="font-medium text-zinc-700 underline underline-offset-4"
+          >
+            {supportEmail}
+          </a>
         </p>
 
         <OrderForm selectedPlan={selectedPlan} />

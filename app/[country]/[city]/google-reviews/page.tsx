@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import {
@@ -6,6 +7,7 @@ import {
   locationEntries,
   type Location,
 } from "@/lib/locations";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -370,19 +372,22 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const location = getLocation(params.country, params.city);
 
   if (!location) {
-    return {
-      title: "Google Review Growth Platform",
+    return buildMetadata({
+      title: "Local Reviews Boost | Google Review Growth",
       description:
-        "Collect more authentic Google reviews with customer-focused review request workflows.",
-    };
+        "Grow your Google reviews with location-based strategies that improve trust, visibility, and local rankings.",
+    });
   }
 
   const profile = getProfile(location);
 
-  return {
-    title: profile.metaTitle,
-    description: profile.metaDescription,
-  };
+  return buildMetadata({
+    title: `Get More Google Reviews in ${location.cityName}, ${location.countryName} | Local Reviews Boost`,
+    description:
+      profile?.metaDescription ??
+      `Build stronger Google review visibility in ${location.cityName}, ${location.countryName} with location-based review strategies that support local trust and rankings.`,
+    path: location.href,
+  });
 }
 
 export default function GoogleReviewsPage({ params }: PageProps) {
@@ -403,6 +408,13 @@ export default function GoogleReviewsPage({ params }: PageProps) {
     <div className="bg-white">
       <section className="px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: `${location.cityName} Reviews`, path: location.href },
+            ]}
+            className="mb-6 text-left"
+          />
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
             {location.cityName}, {location.countryName}
           </p>
@@ -413,7 +425,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             {profile.intro}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href="/start-order">Start growing reviews</Button>
+            <Button href="/start-order">Start Your Plan</Button>
             <Button href="/#pricing" variant="secondary">
               View pricing
             </Button>
@@ -429,7 +441,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
               `Plan review growth around real customer moments for ${location.cityName} buyers.`,
             ],
             [
-              "Gradual delivery",
+              "Steady pacing",
               `Use steady pacing so ${location.cityName} review activity looks credible and supports long-term trust.`,
             ],
             [
@@ -482,7 +494,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 >
                   the start-order page
                 </Link>
-                .
+                for a tailored plan.
               </p>
             </div>
           </section>
@@ -531,7 +543,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
 
           <section className="rounded-2xl border border-zinc-200 bg-zinc-50 p-8">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
-              Build a stronger {location.cityName} review funnel
+              Build a stronger {location.cityName} review presence
             </h2>
             <div className="mt-5 space-y-5 text-lg leading-8 text-zinc-700">
               <p>{profile.strategy}</p>
@@ -611,11 +623,11 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             Ready to grow your Google reviews in {location.cityName}?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-            Launch a city-focused review campaign with realistic pacing,
-            readable customer proof, and a direct path to order.
+            Launch a city-focused review growth plan with realistic pacing,
+            readable customer proof, and practical support.
           </p>
           <Button href="/start-order" variant="secondary" className="mt-8">
-            Start Order
+            Improve Your Review Presence
           </Button>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import FAQ from "@/components/FAQ";
 import { locationEntries } from "@/lib/locations";
@@ -13,6 +14,7 @@ type BlogPostPageProps = {
   title: string;
   description: string;
   sections: readonly BlogSection[];
+  path?: string;
 };
 
 const serviceLinks = [
@@ -47,11 +49,20 @@ export default function BlogPostPage({
   title,
   description,
   sections,
+  path = "/blog",
 }: BlogPostPageProps) {
   return (
     <div className="bg-white">
       <section className="border-b border-zinc-200 px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-4xl">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+              { name: title, path },
+            ]}
+            className="mb-6"
+          />
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
             Review growth guide
           </p>
@@ -159,7 +170,7 @@ export default function BlogPostPage({
                 >
                   the start-order page
                 </Link>{" "}
-                when you want a direct handoff into a structured campaign.
+                when you want a direct handoff into a structured plan.
               </p>
             </div>
             <div className="mt-5 flex flex-wrap gap-3">
@@ -198,20 +209,20 @@ export default function BlogPostPage({
       <FAQ
         className="bg-zinc-50"
         title="Review growth questions"
-        intro="These answers help connect the guide to a practical, location-aware Google review strategy."
+        intro="These answers help connect the guide to a practical, location-aware review growth strategy."
       />
 
       <section className="px-6 pb-24 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-lg bg-zinc-950 px-8 py-14 text-center text-white shadow-2xl shadow-zinc-300">
           <h2 className="text-4xl font-semibold tracking-tight">
-            Need faster results? Get professional help.
+            Need help improving your review presence?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-            Move from scattered review requests to a structured campaign with
-            clear pricing, location targeting, and a simple order flow.
+            Move from scattered review requests to a structured plan with clear
+            pricing, location targeting, and professional support.
           </p>
           <Button href="/start-order" variant="secondary" className="mt-8">
-            Start Order
+            Start Your Plan
           </Button>
         </div>
       </section>

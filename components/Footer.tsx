@@ -1,8 +1,13 @@
 import Link from "next/link";
+import {
+  supportEmail,
+  whatsappDisplayNumber,
+  whatsappHref,
+} from "@/lib/contact";
 import { locationGroups } from "@/lib/locations";
 
 const serviceLinks = [
-  { name: "Custom Google Reviews", href: "/custom-google-reviews" },
+  { name: "Local Reviews Boost", href: "/custom-google-reviews" },
   {
     name: "Google My Business Review Service",
     href: "/google-my-business-review-service",
@@ -12,22 +17,25 @@ const serviceLinks = [
   { name: "Google Review Service", href: "/google-review-service" },
 ];
 
-const whatsappHref =
-  "https://wa.me/919971194967?text=Hi%20I%20am%20interested%20in%20your%20services";
+const companyLinks = [
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+  { name: "Blog", href: "/blog" },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-zinc-950 text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-5 lg:px-8">
         <div>
           <Link href="/" className="text-lg font-bold tracking-tight">
-            Custom Google Reviews
+            Local Reviews Boost
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-300">
-            Helping businesses grow their Google reviews with targeted
-            strategies, local SEO content, and clear review growth workflows.
+            Helping businesses improve review growth, reputation management,
+            and local review visibility with clear, practical support.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Link
@@ -95,7 +103,13 @@ export default function Footer() {
             Contact
           </h2>
           <div className="mt-4 space-y-3 text-sm text-zinc-300">
-            <p>WhatsApp support for orders and plan selection.</p>
+            <p>WhatsApp support for plan questions and setup guidance.</p>
+            <a
+              href={`mailto:${supportEmail}`}
+              className="block text-zinc-300 transition hover:text-white"
+            >
+              {supportEmail}
+            </a>
             <a
               href={whatsappHref}
               target="_blank"
@@ -110,15 +124,33 @@ export default function Footer() {
               >
                 <path d="M10.03 2a7.96 7.96 0 0 0-6.74 12.4L2.25 18.2l3.9-1.03A7.96 7.96 0 1 0 10.03 2Zm3.6 10.55c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1-.13.2-.51.65-.63.78-.11.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.98-.59-.53-.99-1.18-1.1-1.38-.12-.2-.02-.3.08-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.61-1.47-.16-.39-.32-.33-.45-.34h-.38c-.13 0-.35.05-.53.25-.18.2-.69.68-.69 1.65s.71 1.92.81 2.05c.1.13 1.39 2.13 3.38 2.98.47.2.84.32 1.13.41.47.15.91.13 1.25.08.38-.06 1.18-.48 1.34-.94.16-.47.16-.87.11-.95-.05-.08-.18-.13-.38-.23Z" />
               </svg>
-              +91 99711 94967
+              {whatsappDisplayNumber}
             </a>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+            Company
+          </h2>
+          <ul className="mt-4 space-y-3">
+            {companyLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm text-zinc-300 transition hover:text-white"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <div className="border-t border-zinc-800">
         <div className="mx-auto max-w-7xl px-4 py-6 text-sm text-zinc-400 sm:px-6 lg:px-8">
-          Copyright &copy; {year} Custom Google Reviews. All rights reserved.
+          Copyright &copy; {year} Local Reviews Boost. All rights reserved.
         </div>
       </div>
     </footer>

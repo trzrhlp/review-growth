@@ -3,8 +3,7 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
 import Button from "@/components/Button";
-
-const whatsappNumber = "919971194967";
+import { whatsappNumber } from "@/lib/contact";
 
 type OrderFormProps = {
   selectedPlan: string;
@@ -106,7 +105,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           htmlFor="phone"
           className="block text-sm font-semibold text-zinc-900"
         >
-          WhatsApp Number
+          Phone Number
         </label>
         <input
           id="phone"
@@ -144,7 +143,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
         disabled={!isFormComplete || isSubmitting}
         className="w-full disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-zinc-500"
       >
-        {isSubmitting ? "Opening WhatsApp..." : "Continue on WhatsApp"}
+        {isSubmitting ? "Opening WhatsApp..." : "Continue to WhatsApp"}
       </Button>
     </form>
   );

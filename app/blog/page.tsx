@@ -1,12 +1,13 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { locationEntries } from "@/lib/locations";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Google Review Growth Blog",
+export const metadata = buildMetadata({
+  title: "Google Review Growth Blog | Local Reviews Boost",
   description:
     "Practical guides for getting more Google reviews, increasing review volume, and improving Google ratings for local businesses.",
-};
+  path: "/blog",
+});
 
 const posts = [
   {
@@ -84,8 +85,8 @@ export default function BlogIndexPage() {
               >
                 {serviceLinks[1].name}
               </Link>{" "}
-              to see how a structured campaign fits into the wider review
-              funnel.
+              to see how a structured plan fits into a wider review growth
+              strategy.
             </p>
             <p>
               Businesses in{" "}

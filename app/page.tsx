@@ -2,16 +2,15 @@ import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import Button from "@/components/Button";
 import FAQ from "@/components/FAQ";
-import type { Metadata } from "next";
+import { whatsappHref } from "@/lib/contact";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Grow Your Google Reviews with Location-Based Strategies",
+export const metadata = buildMetadata({
+  title: "Local Reviews Boost | Grow Your Google Reviews",
   description:
-    "Increase trust, visibility, and local rankings with customized Google review growth plans for businesses in the USA, UK, and Australia.",
-};
-
-const whatsappHref =
-  "https://wa.me/919971194967?text=Hi%20I%20am%20interested%20in%20your%20services";
+    "Grow your Google reviews with location-based strategies that improve trust, visibility, and local rankings.",
+  path: "/",
+});
 
 const howItWorks = [
   {
@@ -21,24 +20,24 @@ const howItWorks = [
     icon: "01",
   },
   {
-    title: "Submit details",
+    title: "Share your details",
     description:
-      "Send your Google Business Profile link, location focus, and preferred review direction.",
+      "Share your Google Business Profile link, location focus, and customer feedback priorities.",
     icon: "02",
   },
   {
-    title: "Reviews delivered gradually",
+    title: "Launch a structured plan",
     description:
-      "Your campaign is paced to support realistic, steady reputation growth over time.",
+      "Use a measured review growth and reputation management process that supports steady progress over time.",
     icon: "03",
   },
 ];
 
 const advantages = [
   "Location targeting",
-  "Gradual delivery",
-  "Realistic content",
-  "Dedicated support",
+  "Reputation management",
+  "Customer feedback strategy",
+  "Review generation support",
 ];
 
 export default function Home() {
@@ -87,9 +86,9 @@ export default function Home() {
               Built for local trust, not short-term noise.
             </h2>
             <p className="mt-5 text-lg leading-8 text-zinc-600">
-              Custom Google Reviews focuses on gradual, location-aware review
-              growth that helps businesses look more credible where customers
-              are actively comparing options.
+              Local Reviews Boost focuses on review growth, reputation
+              management, and local review visibility that help businesses earn
+              confidence where customers are actively comparing options.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -124,8 +123,8 @@ export default function Home() {
       <section className="bg-white px-6 py-20 lg:px-8">
         <div className="mx-auto grid max-w-5xl gap-6 text-center sm:grid-cols-2">
           {[
-            ["500+", "Businesses Served"],
-            ["10,000+", "Reviews Delivered"],
+            ["500+", "Businesses Supported"],
+            ["10,000+", "Feedback Touchpoints Guided"],
           ].map(([value, label]) => (
             <div key={label} className="rounded-lg bg-zinc-950 p-10 text-white">
               <p className="text-5xl font-semibold tracking-tight">{value}</p>
@@ -142,11 +141,11 @@ export default function Home() {
       <section className="bg-white px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-lg bg-zinc-950 px-8 py-14 text-center shadow-2xl shadow-zinc-300">
           <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Start growing your Google reviews with a focused plan.
+            Improve your review presence with a focused plan.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-            Choose a review growth strategy built around your location, service
-            category, and customer acquisition goals.
+            Choose a review growth strategy built around your location,
+            service category, and customer feedback goals.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button href="/start-order" variant="secondary">
@@ -158,7 +157,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp
+              Contact on WhatsApp
             </Button>
           </div>
         </div>

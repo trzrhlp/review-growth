@@ -1,16 +1,39 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/schema";
+import { seoConfig } from "@/lib/seo";
 import "./globals.css";
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
 export const metadata: Metadata = {
-  title: {
-    default: "Custom Google Reviews | Location-Based Google Review Growth",
-    template: "%s | Custom Google Reviews",
+  metadataBase: new URL(seoConfig.siteUrl),
+  applicationName: seoConfig.siteName,
+  title: seoConfig.siteName,
+  description: seoConfig.defaultDescription,
+  verification: {
+    google: "85n7IW3k7PzJNjhTIbJZ8a7OwCExLUhoAsj3hhJugqs",
   },
-  description:
-    "Grow Google reviews with targeted, location-based strategies, gradual delivery, realistic content, and support for local businesses.",
+  alternates: {
+    canonical: seoConfig.siteUrl,
+  },
+  openGraph: {
+    title: seoConfig.siteName,
+    description: seoConfig.defaultDescription,
+    url: seoConfig.siteUrl,
+    siteName: seoConfig.siteName,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seoConfig.siteName,
+    description: seoConfig.defaultDescription,
+  },
 };
 
 export default function RootLayout({
@@ -21,6 +44,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col bg-white text-zinc-950">
+        <JsonLd data={buildOrganizationSchema()} />
+        <JsonLd data={buildWebSiteSchema()} />
+        {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
