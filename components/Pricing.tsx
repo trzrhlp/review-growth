@@ -10,7 +10,7 @@ const plans = [
     features: [
       "10 reviews",
       "Clear starter option for smaller campaigns",
-      "Direct WhatsApp handoff after checkout",
+      "Secure crypto checkout with WhatsApp follow-up",
     ],
   },
   {

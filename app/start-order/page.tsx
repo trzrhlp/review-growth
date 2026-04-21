@@ -1,18 +1,14 @@
 import { buildMetadata } from "@/lib/seo";
 import { supportEmail } from "@/lib/contact";
+import { getPlanLabel, isPlanName, planNames } from "@/lib/plans";
 import OrderForm from "./OrderForm";
 
-const planNames = ["Starter", "Growth", "Pro"] as const;
 const defaultPlan = planNames[0];
-const planLabels: Record<(typeof planNames)[number], string> = {
-  Starter: "Starter Pack",
-  Growth: "Growth Pack",
-  Pro: "Pro Pack",
-};
 
 type StartOrderPageProps = {
   searchParams?: {
     plan?: string;
+    payment?: string;
   };
 };
 
@@ -30,14 +26,13 @@ function getSelectedPlan(plan?: string) {
 
   const normalizedPlan = decodeURIComponent(plan).trim();
 
-  return planNames.find((planName) => planName === normalizedPlan) ?? normalizedPlan;
+  return isPlanName(normalizedPlan) ? normalizedPlan : defaultPlan;
 }
 
 export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
   const selectedPlan = getSelectedPlan(searchParams?.plan);
-  const selectedPlanLabel = planNames.includes(selectedPlan as (typeof planNames)[number])
-    ? planLabels[selectedPlan as (typeof planNames)[number]]
-    : selectedPlan;
+  const selectedPlanLabel = getPlanLabel(selectedPlan);
+  const paymentWasCancelled = searchParams?.payment === "cancelled";
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-6 py-16 lg:px-8">
@@ -53,7 +48,8 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
           Start Your Plan
         </h1>
         <p className="mt-4 text-center text-base leading-7 text-zinc-600">
-          Share your details and continue on WhatsApp for onboarding guidance.
+          Share your details first, then continue to secure crypto checkout with
+          a fixed USD price.
         </p>
         <p className="mt-2 text-center text-sm text-zinc-500">
           Prefer email?{" "}
@@ -64,8 +60,19 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
             {supportEmail}
           </a>
         </p>
+        <p className="mt-2 text-center text-sm text-zinc-500">
+          Default payment method: USDT TRC20. Also supported: USDT ERC20, ETH,
+          BTC.
+        </p>
 
-        <OrderForm selectedPlan={selectedPlanLabel} />
+        {paymentWasCancelled ? (
+          <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            Payment was cancelled. Your order details are still here if you want
+            to try again.
+          </div>
+        ) : null}
+
+        <OrderForm selectedPlan={selectedPlan} />
       </section>
     </div>
   );

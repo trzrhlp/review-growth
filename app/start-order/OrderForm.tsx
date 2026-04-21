@@ -3,14 +3,14 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
 import Button from "@/components/Button";
-import { whatsappNumber } from "@/lib/contact";
+import { getPlanLabel, type PlanName } from "@/lib/plans";
 
 type OrderFormProps = {
-  selectedPlan: string;
+  selectedPlan: PlanName;
 };
 
 type FormData = {
-  name: string;
+  fullName: string;
   email: string;
   phone: string;
   businessNameOrGoogleMapsLink: string;
@@ -18,15 +18,16 @@ type FormData = {
 
 export default function OrderForm({ selectedPlan }: OrderFormProps) {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
+    fullName: "",
     email: "",
     phone: "",
     businessNameOrGoogleMapsLink: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const isFormComplete =
-    formData.name.trim().length > 0 &&
+    formData.fullName.trim().length > 0 &&
     formData.email.trim().length > 0 &&
     formData.phone.trim().length > 0 &&
     formData.businessNameOrGoogleMapsLink.trim().length > 0;
@@ -38,7 +39,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
     }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!isFormComplete) {
@@ -46,38 +47,62 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
     }
 
     setIsSubmitting(true);
+    setErrorMessage("");
 
-    const message = [
-      `Name: ${formData.name.trim()}`,
-      `Business Name or Google Maps Link: ${formData.businessNameOrGoogleMapsLink.trim()}`,
-      `Plan: ${selectedPlan}`,
-      `Email: ${formData.email.trim()}`,
-      `Phone: ${formData.phone.trim()}`,
-    ].join("\n");
+    try {
+      const response = await fetch("/api/create-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          plan: selectedPlan,
+          fullName: formData.fullName.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          businessNameOrGoogleMapsLink:
+            formData.businessNameOrGoogleMapsLink.trim(),
+        }),
+      });
 
-    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message,
-    )}`;
+      const payload = (await response.json()) as {
+        error?: string;
+        paymentUrl?: string;
+      };
+
+      if (!response.ok || !payload.paymentUrl) {
+        throw new Error(payload.error ?? "Unable to start payment.");
+      }
+
+      window.location.assign(payload.paymentUrl);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to start payment. Please try again.",
+      );
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
       <div>
         <label
-          htmlFor="name"
+          htmlFor="fullName"
           className="block text-sm font-semibold text-zinc-900"
         >
           Full Name
         </label>
         <input
-          id="name"
-          name="name"
+          id="fullName"
+          name="fullName"
           type="text"
           autoComplete="name"
           required
           minLength={2}
-          value={formData.name}
-          onChange={(event) => updateField("name", event.target.value)}
+          value={formData.fullName}
+          onChange={(event) => updateField("fullName", event.target.value)}
           className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>
@@ -144,12 +169,20 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
         />
       </div>
 
+      {errorMessage ? (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {errorMessage}
+        </div>
+      ) : null}
+
       <Button
         type="submit"
         disabled={!isFormComplete || isSubmitting}
         className="w-full disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-zinc-500"
       >
-        {isSubmitting ? "Opening WhatsApp..." : "Continue to WhatsApp"}
+        {isSubmitting
+          ? "Redirecting to secure payment..."
+          : `Continue to ${getPlanLabel(selectedPlan)} payment`}
       </Button>
     </form>
   );

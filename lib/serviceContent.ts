@@ -40,7 +40,7 @@ export const servicePages = {
       {
         heading: "CTA",
         body: [
-          "If your business needs a cleaner path to stronger Google reviews, the next step is straightforward. Review the plans, choose the package that fits your current goals, and send your details through the start-order form. From there, you can continue directly on WhatsApp with the selected plan already included in the message.",
+          "If your business needs a cleaner path to stronger Google reviews, the next step is straightforward. Review the plans, choose the package that fits your current goals, and send your details through the start-order form. From there, you can continue into secure checkout and then move into WhatsApp follow-up after payment.",
           "This is especially useful when you want to improve trust before a busy season, local expansion, website relaunch, or advertising push. A stronger review profile gives prospects more confidence at the exact moment they compare you with other local options.",
         ],
       },
@@ -90,15 +90,15 @@ export const servicePages = {
           "Choose a plan, submit your business details, and provide your Google Maps link. The program is then organized around your selected plan and location focus. If you are not sure where to begin, the Starter Pack can help you test the process, while the Growth Pack is highlighted for businesses that want stronger visibility.",
           "The pacing model is gradual. That matters because steady activity is usually more believable than a sudden rush of feedback. It also gives your business a cleaner path for tracking progress and adjusting future plans.",
           "You can use the internal service pages to compare options, review city-specific pages, and then move to the start-order page when you are ready. This creates a simple path for visitors who arrive through search and need enough context before committing.",
-          "For small and midsize businesses, that structure is often the missing piece. They may understand that reviews matter, but they do not have a clean workflow that turns interest into action. Pricing, educational content, local pages, and the WhatsApp handoff solve that by making the next action obvious.",
+          "For small and midsize businesses, that structure is often the missing piece. They may understand that reviews matter, but they do not have a clean workflow that turns interest into action. Pricing, educational content, local pages, and the checkout-to-onboarding flow solve that by making the next action obvious.",
           "A review growth system also reduces the risk of inconsistency. When businesses only think about reviews during a slow month, the profile stays quiet for long periods. A planned campaign creates steadier momentum and gives the profile more recent activity for prospects to evaluate.",
         ],
       },
       {
         heading: "CTA",
         body: [
-          "If you want to increase Google reviews without building a new system from scratch, start with a package that matches your current market and goals. Then use the order form to share your contact details and move the conversation into WhatsApp with the selected plan already filled in.",
-          "That direct handoff is useful for teams that want clarity quickly. Instead of chasing several calls or emails, you can begin with a concise WhatsApp message and continue from there with a simpler planning process.",
+          "If you want to increase Google reviews without building a new system from scratch, start with a package that matches your current market and goals. Then use the order form to share your contact details, complete secure checkout, and move into WhatsApp follow-up if needed.",
+          "That cleaner handoff is useful for teams that want clarity quickly. Instead of chasing several calls or emails, you can move from plan selection to payment confirmation and then continue with a simpler planning process.",
         ],
       },
       {
@@ -106,7 +106,7 @@ export const servicePages = {
         body: [
           "Most buyers want to know whether campaigns can be customized, whether review growth can be matched to a city, and how long the process usually takes. Those questions are answered in the reusable FAQ because they are part of the decision process on nearly every service page.",
           "The key point is that better review growth comes from a realistic plan. The campaign should fit the business, the market, and the timing expectations of local customers instead of forcing the same approach onto every company.",
-          "For that reason, the page is designed to move naturally into the onboarding flow. Visitors can read the service explanation, compare local pages, review FAQ answers, and then continue to WhatsApp with their selected plan already included in the message.",
+          "For that reason, the page is designed to move naturally into the onboarding flow. Visitors can read the service explanation, compare local pages, review FAQ answers, and then continue into checkout with their selected plan already in place.",
           "That combination of clarity and speed is useful for owners who already know reviews matter and simply need a structured way to move forward.",
         ],
       },
@@ -277,7 +277,7 @@ export const servicePages = {
       {
         heading: "CTA",
         body: [
-          "If your business needs a stronger review profile and a simpler next step, start with the pricing section and move into the onboarding flow. The intake page collects the right details and sends them into WhatsApp in a format that keeps the discussion organized from the first message.",
+          "If your business needs a stronger review profile and a simpler next step, start with the pricing section and move into the onboarding flow. The intake page collects the right details, moves you into secure payment, and keeps the discussion organized for the next stage.",
           "This is useful whether you want to improve trust in one city, support several target markets, or build more recent review activity before a larger SEO push. The key is to begin with a package that matches your current stage instead of waiting until the profile becomes a visible weakness.",
         ],
       },
