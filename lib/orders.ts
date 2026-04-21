@@ -23,7 +23,7 @@ export type OrderRecord = {
   lastWebhookEventKey: string | null;
   paymentMethodDefault: string;
   paymentMethodAlternatives: string[];
-  paymentMethodSelected: string;
+  paymentMethodSelected: string | null;
   emailSent: boolean;
   emailSentAt: string | null;
 };
@@ -48,7 +48,7 @@ type OrderRow = {
   last_webhook_event_key: string | null;
   payment_method_default: string;
   payment_method_alternatives: string[];
-  payment_method_selected: string;
+  payment_method_selected: string | null;
   email_sent: boolean;
   email_sent_at: string | null;
 };
@@ -62,7 +62,6 @@ type CreateOrderInput = {
   nowPaymentsOrderId: string;
   paymentMethodDefault: string;
   paymentMethodAlternatives: string[];
-  paymentMethodSelected: string;
 };
 
 type UpdateOrderPaymentInput = {
@@ -90,6 +89,11 @@ type SyncOrderStatusInput = {
   paymentId: string | null;
   paymentStatus: string;
   eventKey: string;
+};
+
+type UpdateOrderPaymentMethodSelectedInput = {
+  orderId: string;
+  paymentMethodSelected: string;
 };
 
 type RpcOrderResult = {
@@ -177,7 +181,6 @@ export async function createOrder(input: CreateOrderInput) {
       nowpayments_order_id: input.nowPaymentsOrderId,
       payment_method_default: input.paymentMethodDefault,
       payment_method_alternatives: input.paymentMethodAlternatives,
-      payment_method_selected: input.paymentMethodSelected,
     },
     headers: {
       Prefer: "return=representation",
@@ -275,4 +278,26 @@ export async function syncOrderPaymentStatus(input: SyncOrderStatusInput) {
     p_payment_status: input.paymentStatus,
     p_event_key: input.eventKey,
   });
+}
+
+export async function updateOrderPaymentMethodSelected(
+  input: UpdateOrderPaymentMethodSelectedInput,
+) {
+  const rows = await supabaseRequest<OrderRow[]>(
+    `/orders?id=eq.${encodeFilterValue(input.orderId)}`,
+    {
+      method: "PATCH",
+      body: {
+        payment_method_selected: input.paymentMethodSelected,
+      },
+      headers: {
+        Prefer: "return=representation",
+        Accept: "application/json",
+      },
+    },
+  );
+
+  const firstRow = rows?.[0];
+
+  return firstRow ? mapOrder(firstRow) : null;
 }

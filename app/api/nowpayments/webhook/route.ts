@@ -12,6 +12,7 @@ import {
   markOrderPaid,
   markOrderPaymentFailed,
   syncOrderPaymentStatus,
+  updateOrderPaymentMethodSelected,
 } from "@/lib/orders";
 
 export const runtime = "nodejs";
@@ -62,6 +63,14 @@ export async function POST(request: Request) {
     payload.payment_id === null || payload.payment_id === undefined
       ? null
       : String(payload.payment_id);
+  const payCurrency = payload.pay_currency?.trim() || null;
+
+  if (payCurrency && order.paymentMethodSelected !== payCurrency) {
+    await updateOrderPaymentMethodSelected({
+      orderId: order.id,
+      paymentMethodSelected: payCurrency,
+    });
+  }
 
   if (isSuccessfulNowPaymentsStatus(paymentStatus)) {
     const result = await markOrderPaid({

@@ -3,12 +3,6 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
 import Button from "@/components/Button";
-import {
-  defaultPaymentCurrency,
-  paymentCurrencies,
-  paymentCurrencyLabels,
-  type PaymentCurrency,
-} from "@/lib/paymentMethods";
 import { getPlanLabel, type PlanName } from "@/lib/plans";
 
 type OrderFormProps = {
@@ -20,7 +14,6 @@ type FormData = {
   email: string;
   phone: string;
   businessNameOrGoogleMapsLink: string;
-  paymentMethod: PaymentCurrency;
 };
 
 export default function OrderForm({ selectedPlan }: OrderFormProps) {
@@ -29,7 +22,6 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
     email: "",
     phone: "",
     businessNameOrGoogleMapsLink: "",
-    paymentMethod: defaultPaymentCurrency,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -78,7 +70,6 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           phone: formData.phone.trim(),
           businessNameOrGoogleMapsLink:
             formData.businessNameOrGoogleMapsLink.trim(),
-          paymentMethod: formData.paymentMethod,
         }),
       });
 
@@ -115,30 +106,6 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
 
   return (
     <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
-      <div>
-        <label
-          htmlFor="paymentMethod"
-          className="block text-sm font-semibold text-zinc-900"
-        >
-          Payment Method
-        </label>
-        <select
-          id="paymentMethod"
-          name="paymentMethod"
-          value={formData.paymentMethod}
-          onChange={(event) =>
-            updateField("paymentMethod", event.target.value as PaymentCurrency)
-          }
-          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
-        >
-          {paymentCurrencies.map((currency) => (
-            <option key={currency} value={currency}>
-              {paymentCurrencyLabels[currency]}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <div>
         <label
           htmlFor="fullName"

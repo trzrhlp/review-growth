@@ -61,8 +61,8 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
           </a>
         </p>
         <p className="mt-2 text-center text-sm text-zinc-500">
-          Choose your payment coin/network before checkout. USDT TRC20 stays
-          selected by default.
+          You&apos;ll choose your preferred payment coin or network on the hosted
+          checkout page.
         </p>
 
         {paymentWasCancelled ? (

@@ -1,8 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import {
-  createOrder,
-  updateOrderPayment,
-} from "@/lib/orders";
+import { createOrder, updateOrderPayment } from "@/lib/orders";
 import {
   NOWPAYMENTS_API_URL,
   type NowPaymentsInvoiceResponse,
@@ -10,7 +7,6 @@ import {
 import {
   alternativePaymentCurrencies,
   defaultPaymentCurrency,
-  isPaymentCurrency,
 } from "@/lib/paymentMethods";
 import { PLAN_PRICES_USD, isPlanName } from "@/lib/plans";
 
@@ -22,7 +18,6 @@ type CreatePaymentRequest = {
   email?: unknown;
   phone?: unknown;
   businessNameOrGoogleMapsLink?: unknown;
-  paymentMethod?: unknown;
 };
 
 function getRequiredString(value: unknown) {
@@ -86,7 +81,6 @@ export async function POST(request: NextRequest) {
   const businessNameOrGoogleMapsLink = getRequiredString(
     body.businessNameOrGoogleMapsLink,
   );
-  const paymentMethod = body.paymentMethod;
 
   if (!fullName || !email || !phone || !businessNameOrGoogleMapsLink) {
     return NextResponse.json(
@@ -112,13 +106,6 @@ export async function POST(request: NextRequest) {
   if (!isValidPhone(phone)) {
     return NextResponse.json(
       { error: "Enter a valid phone number." },
-      { status: 400 },
-    );
-  }
-
-  if (!isPaymentCurrency(paymentMethod)) {
-    return NextResponse.json(
-      { error: "Select a valid payment method." },
       { status: 400 },
     );
   }
@@ -160,7 +147,6 @@ export async function POST(request: NextRequest) {
       nowPaymentsOrderId,
       paymentMethodDefault: defaultPaymentCurrency,
       paymentMethodAlternatives: [...alternativePaymentCurrencies],
-      paymentMethodSelected: paymentMethod,
     });
 
     console.info("create-payment Supabase order created", {
@@ -173,7 +159,6 @@ export async function POST(request: NextRequest) {
       orderId: order.id,
       nowPaymentsOrderId,
       plan,
-      paymentMethod,
       priceAmount,
     });
 
@@ -186,7 +171,6 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         price_amount: priceAmount,
         price_currency: "usd",
-        pay_currency: paymentMethod,
         order_id: nowPaymentsOrderId,
         order_description: `Local Reviews Boost ${plan} plan for ${email}`,
         success_url: `${origin}/payment-success?orderId=${encodeURIComponent(order.id)}`,

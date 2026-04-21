@@ -20,14 +20,20 @@ create table if not exists public.orders (
   last_webhook_event_key text,
   payment_method_default text not null,
   payment_method_alternatives jsonb not null default '[]'::jsonb,
-  payment_method_selected text not null default 'usdttrc20',
+  payment_method_selected text,
   email_sent boolean not null default false,
   email_sent_at timestamptz,
   constraint orders_status_check check (status in ('pending', 'paid', 'payment_failed'))
 );
 
 alter table public.orders
-  add column if not exists payment_method_selected text not null default 'usdttrc20';
+  add column if not exists payment_method_selected text;
+
+alter table public.orders
+  alter column payment_method_selected drop not null;
+
+alter table public.orders
+  alter column payment_method_selected drop default;
 
 create index if not exists orders_nowpayments_payment_id_idx
   on public.orders (nowpayments_payment_id);
