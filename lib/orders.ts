@@ -23,6 +23,7 @@ export type OrderRecord = {
   lastWebhookEventKey: string | null;
   paymentMethodDefault: string;
   paymentMethodAlternatives: string[];
+  paymentMethodSelected: string;
   emailSent: boolean;
   emailSentAt: string | null;
 };
@@ -47,6 +48,7 @@ type OrderRow = {
   last_webhook_event_key: string | null;
   payment_method_default: string;
   payment_method_alternatives: string[];
+  payment_method_selected: string;
   email_sent: boolean;
   email_sent_at: string | null;
 };
@@ -60,6 +62,7 @@ type CreateOrderInput = {
   nowPaymentsOrderId: string;
   paymentMethodDefault: string;
   paymentMethodAlternatives: string[];
+  paymentMethodSelected: string;
 };
 
 type UpdateOrderPaymentInput = {
@@ -117,6 +120,7 @@ function mapOrder(row: OrderRow): OrderRecord {
     paymentMethodAlternatives: Array.isArray(row.payment_method_alternatives)
       ? row.payment_method_alternatives
       : [],
+    paymentMethodSelected: row.payment_method_selected,
     emailSent: row.email_sent,
     emailSentAt: row.email_sent_at,
   };
@@ -173,6 +177,7 @@ export async function createOrder(input: CreateOrderInput) {
       nowpayments_order_id: input.nowPaymentsOrderId,
       payment_method_default: input.paymentMethodDefault,
       payment_method_alternatives: input.paymentMethodAlternatives,
+      payment_method_selected: input.paymentMethodSelected,
     },
     headers: {
       Prefer: "return=representation",

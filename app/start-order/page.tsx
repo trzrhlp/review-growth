@@ -61,8 +61,8 @@ export default function StartOrderPage({ searchParams }: StartOrderPageProps) {
           </a>
         </p>
         <p className="mt-2 text-center text-sm text-zinc-500">
-          Default payment method: USDT TRC20. Also supported: USDT ERC20, ETH,
-          BTC.
+          Choose your payment coin/network before checkout. USDT TRC20 stays
+          selected by default.
         </p>
 
         {paymentWasCancelled ? (

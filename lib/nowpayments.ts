@@ -1,8 +1,5 @@
 import crypto from "node:crypto";
-
 export const NOWPAYMENTS_API_URL = "https://api.nowpayments.io/v1";
-export const defaultPaymentCurrency = "usdttrc20";
-export const alternativePaymentCurrencies = ["usdterc20", "eth", "btc"] as const;
 
 export type NowPaymentsInvoiceResponse = {
   id?: string;
