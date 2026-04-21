@@ -39,6 +39,14 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
     }));
   }
 
+  function getFallbackErrorMessage(response: Response) {
+    if (response.status >= 500) {
+      return "Unable to start payment right now. Please try again.";
+    }
+
+    return "Unable to start payment. Please try again.";
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -65,13 +73,24 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
         }),
       });
 
-      const payload = (await response.json()) as {
-        error?: string;
-        paymentUrl?: string;
-      };
+      const responseText = await response.text();
+      let payload: { error?: string; paymentUrl?: string } | null = null;
 
-      if (!response.ok || !payload.paymentUrl) {
-        throw new Error(payload.error ?? "Unable to start payment.");
+      if (responseText) {
+        try {
+          payload = JSON.parse(responseText) as {
+            error?: string;
+            paymentUrl?: string;
+          };
+        } catch {
+          payload = null;
+        }
+      }
+
+      if (!response.ok || !payload?.paymentUrl) {
+        throw new Error(
+          payload?.error ?? getFallbackErrorMessage(response),
+        );
       }
 
       window.location.assign(payload.paymentUrl);

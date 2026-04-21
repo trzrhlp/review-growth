@@ -48,6 +48,10 @@ export async function POST(request: NextRequest) {
   const apiKey = process.env.NOWPAYMENTS_API_KEY;
 
   if (!apiKey) {
+    console.error("create-payment missing env var", {
+      missingEnvVars: ["NOWPAYMENTS_API_KEY"],
+    });
+
     return NextResponse.json(
       { error: "Payment provider is not configured." },
       { status: 500 },
@@ -111,18 +115,54 @@ export async function POST(request: NextRequest) {
   const plan = body.plan;
   const priceAmount = PLAN_PRICES_USD[plan];
   const nowPaymentsOrderId = `lrb-${plan.toLowerCase()}-${crypto.randomUUID()}`;
-  const order = await createOrder({
-    plan,
-    fullName,
-    email,
-    phone,
-    businessNameOrGoogleMapsLink,
-    nowPaymentsOrderId,
-    paymentMethodDefault: defaultPaymentCurrency,
-    paymentMethodAlternatives: [...alternativePaymentCurrencies],
-  });
+  const missingSupabaseEnvVars = [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+  ].filter((name) => !process.env[name]?.trim());
 
   try {
+    if (missingSupabaseEnvVars.length > 0) {
+      console.error("create-payment missing env vars", {
+        missingEnvVars: missingSupabaseEnvVars,
+      });
+
+      return NextResponse.json(
+        { error: "Order storage is not configured." },
+        { status: 500 },
+      );
+    }
+
+    console.info("create-payment creating Supabase order", {
+      plan,
+      email,
+      nowPaymentsOrderId,
+    });
+
+    const order = await createOrder({
+      plan,
+      fullName,
+      email,
+      phone,
+      businessNameOrGoogleMapsLink,
+      nowPaymentsOrderId,
+      paymentMethodDefault: defaultPaymentCurrency,
+      paymentMethodAlternatives: [...alternativePaymentCurrencies],
+    });
+
+    console.info("create-payment Supabase order created", {
+      orderId: order.id,
+      nowPaymentsOrderId,
+      plan,
+    });
+
+    console.info("create-payment creating NOWPayments invoice", {
+      orderId: order.id,
+      nowPaymentsOrderId,
+      plan,
+      priceAmount,
+    });
+
     const nowPaymentsResponse = await fetch(`${NOWPAYMENTS_API_URL}/invoice`, {
       method: "POST",
       headers: {
@@ -143,9 +183,13 @@ export async function POST(request: NextRequest) {
     });
 
     let invoice: NowPaymentsInvoiceResponse | null = null;
+    let nowPaymentsRawResponse = "";
 
     try {
-      invoice = (await nowPaymentsResponse.json()) as NowPaymentsInvoiceResponse;
+      nowPaymentsRawResponse = await nowPaymentsResponse.text();
+      invoice = nowPaymentsRawResponse
+        ? (JSON.parse(nowPaymentsRawResponse) as NowPaymentsInvoiceResponse)
+        : null;
     } catch {
       invoice = null;
     }
@@ -155,6 +199,7 @@ export async function POST(request: NextRequest) {
         status: nowPaymentsResponse.status,
         orderId: order.id,
         nowPaymentsOrderId,
+        rawResponse: nowPaymentsRawResponse,
         response: invoice,
       });
 
@@ -163,6 +208,12 @@ export async function POST(request: NextRequest) {
         { status: nowPaymentsResponse.ok ? 502 : nowPaymentsResponse.status },
       );
     }
+
+    console.info("create-payment NOWPayments invoice created", {
+      orderId: order.id,
+      nowPaymentsOrderId,
+      invoiceId: invoice.id ?? null,
+    });
 
     await updateOrderPayment({
       orderId: order.id,
@@ -176,8 +227,7 @@ export async function POST(request: NextRequest) {
       invoiceId: invoice.id ?? null,
     });
   } catch (error) {
-    console.error("Failed to create NOWPayments invoice", {
-      orderId: order.id,
+    console.error("create-payment exception", {
       nowPaymentsOrderId,
       error,
     });
