@@ -12,7 +12,7 @@ function getNextSteps(order: OrderRecord) {
 }
 
 export async function sendPaidOrderConfirmationEmail(order: OrderRecord) {
-  if (order.emailSentAt) {
+  if (order.emailSent || order.emailSentAt) {
     return { skipped: true };
   }
 

@@ -1,6 +1,5 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
 import { PLAN_PRICES_USD, type PlanName } from "@/lib/plans";
+import { supabaseRequest } from "@/lib/supabase";
 
 export type OrderStatus = "pending" | "paid" | "payment_failed";
 
@@ -24,11 +23,32 @@ export type OrderRecord = {
   lastWebhookEventKey: string | null;
   paymentMethodDefault: string;
   paymentMethodAlternatives: string[];
+  emailSent: boolean;
   emailSentAt: string | null;
 };
 
-type OrderStoreShape = {
-  orders: OrderRecord[];
+type OrderRow = {
+  id: string;
+  plan: PlanName;
+  amount_usd: number;
+  full_name: string;
+  email: string;
+  phone: string;
+  business_name_or_google_maps_link: string;
+  status: OrderStatus;
+  created_at: string;
+  updated_at: string;
+  paid_at: string | null;
+  nowpayments_order_id: string;
+  nowpayments_invoice_id: string | null;
+  nowpayments_payment_id: string | null;
+  nowpayments_invoice_url: string | null;
+  nowpayments_payment_status: string | null;
+  last_webhook_event_key: string | null;
+  payment_method_default: string;
+  payment_method_alternatives: string[];
+  email_sent: boolean;
+  email_sent_at: string | null;
 };
 
 type CreateOrderInput = {
@@ -57,6 +77,7 @@ type MarkOrderPaidInput = {
 
 type MarkOrderFailedInput = {
   orderId: string;
+  paymentId: string | null;
   paymentStatus: string;
   eventKey: string;
 };
@@ -68,181 +89,185 @@ type SyncOrderStatusInput = {
   eventKey: string;
 };
 
-const dataDirectory = path.join(process.cwd(), ".data");
-const storePath = path.join(dataDirectory, "orders.json");
+type RpcOrderResult = {
+  order: OrderRow | null;
+  alreadyProcessed: boolean;
+};
 
-async function ensureStore() {
-  await mkdir(dataDirectory, { recursive: true });
-
-  try {
-    await readFile(storePath, "utf8");
-  } catch {
-    const initialStore: OrderStoreShape = { orders: [] };
-    await writeFile(storePath, JSON.stringify(initialStore, null, 2), "utf8");
-  }
+function mapOrder(row: OrderRow): OrderRecord {
+  return {
+    id: row.id,
+    plan: row.plan,
+    amountUsd: row.amount_usd,
+    fullName: row.full_name,
+    email: row.email,
+    phone: row.phone,
+    businessNameOrGoogleMapsLink: row.business_name_or_google_maps_link,
+    status: row.status,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    paidAt: row.paid_at,
+    nowPaymentsOrderId: row.nowpayments_order_id,
+    nowPaymentsInvoiceId: row.nowpayments_invoice_id,
+    nowPaymentsPaymentId: row.nowpayments_payment_id,
+    nowPaymentsInvoiceUrl: row.nowpayments_invoice_url,
+    nowPaymentsPaymentStatus: row.nowpayments_payment_status,
+    lastWebhookEventKey: row.last_webhook_event_key,
+    paymentMethodDefault: row.payment_method_default,
+    paymentMethodAlternatives: Array.isArray(row.payment_method_alternatives)
+      ? row.payment_method_alternatives
+      : [],
+    emailSent: row.email_sent,
+    emailSentAt: row.email_sent_at,
+  };
 }
 
-async function readStore() {
-  await ensureStore();
-  const raw = await readFile(storePath, "utf8");
-  const parsed = JSON.parse(raw) as Partial<OrderStoreShape>;
+function encodeFilterValue(value: string) {
+  return encodeURIComponent(value);
+}
+
+async function getSingleOrderByFilter(filter: string) {
+  const rows = await supabaseRequest<OrderRow[]>(
+    `/orders?${filter}&select=*`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    },
+  );
+
+  const firstRow = rows?.[0];
+
+  return firstRow ? mapOrder(firstRow) : null;
+}
+
+async function callOrderRpc(
+  functionName: string,
+  payload: Record<string, string | null>,
+) {
+  const result = await supabaseRequest<RpcOrderResult>(`/rpc/${functionName}`, {
+    method: "POST",
+    body: payload,
+    headers: {
+      Accept: "application/json",
+    },
+  });
 
   return {
-    orders: Array.isArray(parsed.orders) ? parsed.orders : [],
-  } satisfies OrderStoreShape;
-}
-
-async function writeStore(store: OrderStoreShape) {
-  await writeFile(storePath, JSON.stringify(store, null, 2), "utf8");
+    order: result?.order ? mapOrder(result.order) : null,
+    alreadyProcessed: result?.alreadyProcessed ?? false,
+  };
 }
 
 export async function createOrder(input: CreateOrderInput) {
-  const store = await readStore();
-  const timestamp = new Date().toISOString();
-  const order: OrderRecord = {
-    id: crypto.randomUUID(),
-    plan: input.plan,
-    amountUsd: PLAN_PRICES_USD[input.plan],
-    fullName: input.fullName,
-    email: input.email,
-    phone: input.phone,
-    businessNameOrGoogleMapsLink: input.businessNameOrGoogleMapsLink,
-    status: "pending",
-    createdAt: timestamp,
-    updatedAt: timestamp,
-    paidAt: null,
-    nowPaymentsOrderId: input.nowPaymentsOrderId,
-    nowPaymentsInvoiceId: null,
-    nowPaymentsPaymentId: null,
-    nowPaymentsInvoiceUrl: null,
-    nowPaymentsPaymentStatus: null,
-    lastWebhookEventKey: null,
-    paymentMethodDefault: input.paymentMethodDefault,
-    paymentMethodAlternatives: input.paymentMethodAlternatives,
-    emailSentAt: null,
-  };
+  const rows = await supabaseRequest<OrderRow[]>("/orders", {
+    method: "POST",
+    body: {
+      plan: input.plan,
+      amount_usd: PLAN_PRICES_USD[input.plan],
+      full_name: input.fullName,
+      email: input.email,
+      phone: input.phone,
+      business_name_or_google_maps_link: input.businessNameOrGoogleMapsLink,
+      status: "pending",
+      nowpayments_order_id: input.nowPaymentsOrderId,
+      payment_method_default: input.paymentMethodDefault,
+      payment_method_alternatives: input.paymentMethodAlternatives,
+    },
+    headers: {
+      Prefer: "return=representation",
+      Accept: "application/json",
+    },
+  });
 
-  store.orders.push(order);
-  await writeStore(store);
+  const firstRow = rows?.[0];
 
-  return order;
-}
-
-export async function updateOrderPayment(
-  input: UpdateOrderPaymentInput,
-) {
-  const store = await readStore();
-  const order = store.orders.find((entry) => entry.id === input.orderId);
-
-  if (!order) {
-    return null;
+  if (!firstRow) {
+    throw new Error("Supabase did not return the created order.");
   }
 
-  order.nowPaymentsInvoiceId = input.invoiceId ?? order.nowPaymentsInvoiceId;
-  order.nowPaymentsInvoiceUrl = input.invoiceUrl ?? order.nowPaymentsInvoiceUrl;
-  order.updatedAt = new Date().toISOString();
+  return mapOrder(firstRow);
+}
 
-  await writeStore(store);
+export async function updateOrderPayment(input: UpdateOrderPaymentInput) {
+  const rows = await supabaseRequest<OrderRow[]>(
+    `/orders?id=eq.${encodeFilterValue(input.orderId)}`,
+    {
+      method: "PATCH",
+      body: {
+        ...(input.invoiceId !== undefined
+          ? { nowpayments_invoice_id: input.invoiceId }
+          : {}),
+        ...(input.invoiceUrl !== undefined
+          ? { nowpayments_invoice_url: input.invoiceUrl }
+          : {}),
+      },
+      headers: {
+        Prefer: "return=representation",
+        Accept: "application/json",
+      },
+    },
+  );
 
-  return order;
+  const firstRow = rows?.[0];
+
+  return firstRow ? mapOrder(firstRow) : null;
 }
 
 export async function getOrderById(orderId: string) {
-  const store = await readStore();
-  return store.orders.find((order) => order.id === orderId) ?? null;
+  return getSingleOrderByFilter(`id=eq.${encodeFilterValue(orderId)}`);
 }
 
 export async function getOrderByNowPaymentsOrderId(nowPaymentsOrderId: string) {
-  const store = await readStore();
-  return (
-    store.orders.find((order) => order.nowPaymentsOrderId === nowPaymentsOrderId) ??
-    null
+  return getSingleOrderByFilter(
+    `nowpayments_order_id=eq.${encodeFilterValue(nowPaymentsOrderId)}`,
   );
 }
 
 export async function markOrderPaid(input: MarkOrderPaidInput) {
-  const store = await readStore();
-  const order = store.orders.find((entry) => entry.id === input.orderId);
-
-  if (!order) {
-    return { order: null, alreadyProcessed: false };
-  }
-
-  if (order.lastWebhookEventKey === input.eventKey) {
-    return { order, alreadyProcessed: true };
-  }
-
-  order.status = "paid";
-  order.paidAt = order.paidAt ?? new Date().toISOString();
-  order.updatedAt = new Date().toISOString();
-  order.nowPaymentsPaymentId = input.paymentId ?? order.nowPaymentsPaymentId;
-  order.nowPaymentsPaymentStatus = input.paymentStatus;
-  order.lastWebhookEventKey = input.eventKey;
-
-  await writeStore(store);
-
-  return { order, alreadyProcessed: false };
+  return callOrderRpc("mark_order_paid", {
+    p_order_id: input.orderId,
+    p_payment_id: input.paymentId,
+    p_payment_status: input.paymentStatus,
+    p_event_key: input.eventKey,
+  });
 }
 
 export async function markOrderPaymentFailed(input: MarkOrderFailedInput) {
-  const store = await readStore();
-  const order = store.orders.find((entry) => entry.id === input.orderId);
-
-  if (!order) {
-    return { order: null, alreadyProcessed: false };
-  }
-
-  if (order.lastWebhookEventKey === input.eventKey) {
-    return { order, alreadyProcessed: true };
-  }
-
-  if (order.status !== "paid") {
-    order.status = "payment_failed";
-  }
-
-  order.updatedAt = new Date().toISOString();
-  order.nowPaymentsPaymentStatus = input.paymentStatus;
-  order.lastWebhookEventKey = input.eventKey;
-
-  await writeStore(store);
-
-  return { order, alreadyProcessed: false };
+  return callOrderRpc("mark_order_payment_failed", {
+    p_order_id: input.orderId,
+    p_payment_id: input.paymentId,
+    p_payment_status: input.paymentStatus,
+    p_event_key: input.eventKey,
+  });
 }
 
 export async function markConfirmationEmailSent(orderId: string) {
-  const store = await readStore();
-  const order = store.orders.find((entry) => entry.id === orderId);
+  const rows = await supabaseRequest<OrderRow[]>(
+    `/orders?id=eq.${encodeFilterValue(orderId)}&email_sent=eq.false`,
+    {
+      method: "PATCH",
+      body: {
+        email_sent: true,
+        email_sent_at: new Date().toISOString(),
+      },
+      headers: {
+        Prefer: "return=representation",
+        Accept: "application/json",
+      },
+    },
+  );
 
-  if (!order) {
-    return null;
-  }
+  const firstRow = rows?.[0];
 
-  order.emailSentAt = new Date().toISOString();
-  order.updatedAt = new Date().toISOString();
-
-  await writeStore(store);
-
-  return order;
+  return firstRow ? mapOrder(firstRow) : null;
 }
 
 export async function syncOrderPaymentStatus(input: SyncOrderStatusInput) {
-  const store = await readStore();
-  const order = store.orders.find((entry) => entry.id === input.orderId);
-
-  if (!order) {
-    return { order: null, alreadyProcessed: false };
-  }
-
-  if (order.lastWebhookEventKey === input.eventKey) {
-    return { order, alreadyProcessed: true };
-  }
-
-  order.updatedAt = new Date().toISOString();
-  order.nowPaymentsPaymentId = input.paymentId ?? order.nowPaymentsPaymentId;
-  order.nowPaymentsPaymentStatus = input.paymentStatus;
-  order.lastWebhookEventKey = input.eventKey;
-
-  await writeStore(store);
-
-  return { order, alreadyProcessed: false };
+  return callOrderRpc("sync_order_payment_status", {
+    p_order_id: input.orderId,
+    p_payment_id: input.paymentId,
+    p_payment_status: input.paymentStatus,
+    p_event_key: input.eventKey,
+  });
 }

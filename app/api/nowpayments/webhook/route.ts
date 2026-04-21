@@ -95,6 +95,7 @@ export async function POST(request: Request) {
   if (isFailedNowPaymentsStatus(paymentStatus)) {
     const result = await markOrderPaymentFailed({
       orderId: order.id,
+      paymentId,
       paymentStatus,
       eventKey,
     });
