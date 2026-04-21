@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
-      className="fixed bottom-4 right-4 z-50 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#25D366] text-zinc-950 shadow-lg shadow-zinc-950/15 transition hover:bg-[#20bd5a] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 sm:bottom-6 sm:right-6"
+      className="fixed bottom-3 right-3 z-50 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-[#25D366] text-zinc-950 shadow-lg shadow-zinc-950/15 transition hover:bg-[#20bd5a] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 sm:bottom-6 sm:right-6 sm:h-12 sm:w-12"
     >
       <svg
         aria-hidden="true"

@@ -62,7 +62,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-zinc-300 transition hover:text-white"
+                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
                 >
                   {link.name}
                 </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-zinc-300 transition hover:text-white"
+                        className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
                       >
                         {link.cityName}
                       </Link>
@@ -106,7 +106,7 @@ export default function Footer() {
             <p>WhatsApp support for plan questions and setup guidance.</p>
             <a
               href={`mailto:${supportEmail}`}
-              className="block text-zinc-300 transition hover:text-white"
+              className="inline-flex min-h-11 items-center text-zinc-300 transition hover:text-white sm:min-h-0"
             >
               {supportEmail}
             </a>
@@ -138,7 +138,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-zinc-300 transition hover:text-white"
+                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
                 >
                   {link.name}
                 </Link>
