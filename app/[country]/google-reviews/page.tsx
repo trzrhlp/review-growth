@@ -4,7 +4,7 @@ import FAQ from "@/components/FAQ";
 import { blogPostEntries } from "@/lib/blogRegistry";
 import { buildMetadata } from "@/lib/seo";
 import { countryEntries, getCountryEntry } from "@/lib/locations";
-import { BookOpenText, MapPinned, NotebookText } from "lucide-react";
+import { MapPinned, NotebookText } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,6 +19,10 @@ const serviceLinks = [
   { name: "Get More Google Reviews", href: "/get-more-google-reviews" },
   { name: "Increase Google Reviews", href: "/increase-google-reviews" },
   { name: "Google Review Service", href: "/google-review-service" },
+  {
+    name: "Google My Business Review Service",
+    href: "/google-my-business-review-service",
+  },
 ];
 
 export function generateStaticParams() {
@@ -50,7 +54,7 @@ export default function CountryHubPage({ params }: PageProps) {
     notFound();
   }
 
-  const featuredBlogs = blogPostEntries.slice(3, 7);
+  const featuredBlogs = blogPostEntries.slice(0, 4);
 
   return (
     <div className="bg-white">
@@ -71,9 +75,7 @@ export default function CountryHubPage({ params }: PageProps) {
             Grow Google reviews across {country.countryName}
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-600">
-            {country.cityDescription} This hub connects the city pages, service
-            pages, and practical guides that matter most for businesses working
-            in {country.countryName}.
+            {country.hubIntro}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/start-order">Start Your Plan</Button>
@@ -88,16 +90,16 @@ export default function CountryHubPage({ params }: PageProps) {
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
           {[
             [
-              "Country-level intent",
-              `Use ${country.countryLabel} location pages to keep review growth tied to the cities where buyers are already comparing options.`,
+              "Country-level planning",
+              `Use the ${country.countryLabel} hub when you need a broader view of review growth across multiple cities without repeating city-specific conversion angles.`,
             ],
             [
-              "Useful internal links",
-              `Connect city pages, service pages, and blog posts so visitors can move from research into action without losing context.`,
+              "Service pathways",
+              `Move from city discovery into service pages and practical guides so research traffic has a clear internal path toward action.`,
             ],
             [
-              "Local trust coverage",
-              `Support ${country.businessFocus} with review content that reflects real customer expectations in competitive local searches.`,
+              "Buyer expectations",
+              `Support ${country.businessFocus} with review strategy that matches how customers in ${country.countryName} judge trust before they enquire.`,
             ],
           ].map(([title, description]) => (
             <article
@@ -113,33 +115,44 @@ export default function CountryHubPage({ params }: PageProps) {
 
       <section className="px-6 py-16 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.3fr_0.7fr]">
-          <section className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)]">
-            <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
-              City pages in {country.countryName}
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-zinc-700">
-              Use these city routes to target local demand with the same URL
-              structure, service framing, and review-growth intent. Each page
-              links back to this hub and outward to related service and blog
-              content.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {country.links.map((location) => (
-                <Link
-                  key={location.href}
-                  href={location.href}
-                  className="rounded-[1.5rem] border border-zinc-200 bg-zinc-50 px-5 py-5 transition hover:-translate-y-1 hover:border-zinc-300 hover:bg-white"
-                >
-                  <p className="text-lg font-semibold text-zinc-950">
-                    {location.cityName}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-zinc-600">
-                    {country.competitiveNote}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </section>
+          <div className="space-y-6">
+            <section className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)]">
+              <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
+                {country.hubSectionTitle}
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-zinc-700">
+                {country.hubSectionBody}
+              </p>
+            </section>
+
+            <section className="rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)]">
+              <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
+                City pages in {country.countryName}
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-zinc-700">
+                Use these city routes to target local demand in the markets
+                where buyers are already comparing providers. Each page keeps
+                its own local framing while linking back to this country hub
+                for broader service and blog context.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {country.links.map((location) => (
+                  <Link
+                    key={location.href}
+                    href={location.href}
+                    className="rounded-[1.5rem] border border-zinc-200 bg-zinc-50 px-5 py-5 transition hover:-translate-y-1 hover:border-zinc-300 hover:bg-white"
+                  >
+                    <p className="text-lg font-semibold text-zinc-950">
+                      {location.cityName}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-600">
+                      {country.competitiveNote}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
 
           <div className="space-y-6">
             <section className="rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6">
@@ -197,8 +210,8 @@ export default function CountryHubPage({ params }: PageProps) {
             Need a cleaner review growth plan for {country.countryName}?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-            Use the country hub to compare cities, then move into a structured
-            service plan when the market and timing are clear.
+            Compare city pages, review the service options, and use the guides
+            when you need more context before starting a structured plan.
           </p>
           <Button href="/start-order" variant="secondary" className="mt-8">
             Start Your Plan

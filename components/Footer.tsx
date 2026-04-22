@@ -33,6 +33,10 @@ const legalLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const featuredLocationGroups = locationGroups.map((group) => ({
+    ...group,
+    links: group.links.slice(0, 8),
+  }));
 
   return (
     <footer className="border-t border-zinc-200 bg-zinc-950 text-white">
@@ -64,138 +68,144 @@ export default function Footer() {
         </div>
 
         <div className="grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-6">
-        <div>
-          <Link href="/" className="text-lg font-bold tracking-tight">
-            Local Reviews Boost
-          </Link>
-          <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-300">
-            Helping businesses improve review growth, reputation management,
-            and local review visibility with clear, practical support.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/blog/how-to-get-google-reviews"
-              className="text-sm font-medium text-zinc-300 underline underline-offset-4 hover:text-white"
-            >
-              Review guide
+          <div>
+            <Link href="/" className="text-lg font-bold tracking-tight">
+              Local Reviews Boost
             </Link>
-            <Link
-              href="/#pricing"
-              className="text-sm font-medium text-zinc-300 underline underline-offset-4 hover:text-white"
-            >
-              Pricing
-            </Link>
+            <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-300">
+              Helping businesses improve review growth, reputation management,
+              and local review visibility with clear, practical support.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/blog/how-to-get-google-reviews"
+                className="text-sm font-medium text-zinc-300 underline underline-offset-4 hover:text-white"
+              >
+                Review guide
+              </Link>
+              <Link
+                href="/#pricing"
+                className="text-sm font-medium text-zinc-300 underline underline-offset-4 hover:text-white"
+              >
+                Pricing
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
-            Services
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {serviceLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
-            Locations
-          </h2>
-          <div className="mt-4 space-y-5">
-            {locationGroups.map((group) => (
-              <div key={group.country}>
-                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                  <Link href={group.href} className="hover:text-white">
-                    {group.countryLabel}
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+              Services
+            </h2>
+            <ul className="mt-4 space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
+                  >
+                    {link.name}
                   </Link>
-                </p>
-                <ul className="mt-2 grid grid-cols-2 gap-x-6 gap-y-2">
-                  {group.links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
-                      >
-                        {link.cityName}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+              Locations
+            </h2>
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
+              {featuredLocationGroups.map((group) => (
+                <div key={group.country}>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                    <Link href={group.href} className="hover:text-white">
+                      {group.countryLabel}
+                    </Link>
+                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
+                        >
+                          {link.cityName}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={group.href}
+                    className="mt-4 inline-flex min-h-11 items-center py-1 text-sm font-medium text-zinc-300 underline underline-offset-4 transition hover:text-white sm:min-h-0 sm:py-0"
+                  >
+                    View all cities
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+              Contact
+            </h2>
+            <div className="mt-4 space-y-3 text-sm text-zinc-300">
+              <p>WhatsApp support for plan questions and setup guidance.</p>
+              <a
+                href={`mailto:${supportEmail}`}
+                className="inline-flex min-h-11 items-center gap-2 text-zinc-300 transition hover:text-white sm:min-h-0"
+              >
+                <Mail aria-hidden="true" className="h-4 w-4" />
+                {supportEmail}
+              </a>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-zinc-700 px-4 py-2 font-semibold text-white transition hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                <MessageCircleMore aria-hidden="true" className="h-4 w-4" />
+                {whatsappDisplayNumber}
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+              Company
+            </h2>
+            <ul className="mt-4 space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+              Trust
+            </h2>
+            <ul className="mt-4 space-y-3">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
-            Contact
-          </h2>
-          <div className="mt-4 space-y-3 text-sm text-zinc-300">
-            <p>WhatsApp support for plan questions and setup guidance.</p>
-            <a
-              href={`mailto:${supportEmail}`}
-              className="inline-flex min-h-11 items-center gap-2 text-zinc-300 transition hover:text-white sm:min-h-0"
-            >
-              <Mail aria-hidden="true" className="h-4 w-4" />
-              {supportEmail}
-            </a>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-zinc-700 px-4 py-2 font-semibold text-white transition hover:border-zinc-500 hover:bg-zinc-900"
-            >
-              <MessageCircleMore aria-hidden="true" className="h-4 w-4" />
-              {whatsappDisplayNumber}
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
-            Company
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {companyLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
-            Trust
-          </h2>
-          <ul className="mt-4 space-y-3">
-            {legalLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
       </div>
 
       <div className="border-t border-zinc-800">
