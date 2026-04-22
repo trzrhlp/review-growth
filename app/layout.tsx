@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   applicationName: seoConfig.siteName,
   title: seoConfig.siteName,
   description: seoConfig.defaultDescription,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   verification: {
     google: "85n7IW3k7PzJNjhTIbJZ8a7OwCExLUhoAsj3hhJugqs",
   },
