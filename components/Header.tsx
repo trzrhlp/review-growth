@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, MapPinned, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { locationGroups } from "@/lib/locations";
 
 export default function Header() {
@@ -24,12 +25,25 @@ export default function Header() {
       >
         <Link
           href="/"
-          className="inline-flex items-center gap-3 text-lg font-semibold tracking-tight text-zinc-950 sm:text-xl"
+          className="inline-flex items-center"
+          aria-label="LocalReviewsBoost home"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#111827,#0f766e)] text-white shadow-lg shadow-teal-900/20">
-            <MapPinned aria-hidden="true" className="h-5 w-5" />
-          </span>
-          Local Reviews Boost
+          <Image
+            src="/logo-icon.svg"
+            alt="LocalReviewsBoost"
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 sm:hidden"
+          />
+          <Image
+            src="/logo.svg"
+            alt="LocalReviewsBoost"
+            width={720}
+            height={160}
+            priority
+            className="hidden h-auto w-[184px] sm:block md:w-[210px]"
+          />
         </Link>
 
         <button
