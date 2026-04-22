@@ -43,12 +43,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-white text-zinc-950">
+      <body className="flex min-h-full flex-col bg-[linear-gradient(180deg,#fffdf8_0%,#ffffff_18%,#f7f8fb_100%)] text-zinc-950">
         <JsonLd data={buildOrganizationSchema()} />
         <JsonLd data={buildWebSiteSchema()} />
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-24 sm:pb-0">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

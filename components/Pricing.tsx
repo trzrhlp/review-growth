@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Check, CircleDollarSign, MapPinned, MessageCircleMore, ShieldCheck, Star } from "lucide-react";
 import { whatsappHref } from "@/lib/contact";
 
 const plans = [
@@ -46,7 +47,10 @@ function getStartOrderHref(planName: string) {
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-zinc-50 px-6 py-24 lg:px-8">
+    <section
+      id="pricing"
+      className="border-y border-zinc-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.85),rgba(244,244,245,0.9))] px-6 py-24 lg:px-8"
+    >
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
           Pricing
@@ -60,13 +64,29 @@ export default function Pricing() {
         </p>
       </div>
 
+      <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3">
+        {[
+          { icon: CircleDollarSign, label: "Fixed USD pricing" },
+          { icon: ShieldCheck, label: "Secure checkout" },
+          { icon: MapPinned, label: "Location-aware support" },
+        ].map((item) => (
+          <span
+            key={item.label}
+            className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm"
+          >
+            <item.icon aria-hidden="true" className="h-4 w-4 text-zinc-950" />
+            {item.label}
+          </span>
+        ))}
+      </div>
+
       <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
         {plans.map((plan) => (
           <article
             key={plan.name}
-            className={`rounded-lg border bg-white p-8 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/70 ${
+            className={`flex h-full flex-col rounded-[2rem] border bg-white/95 p-8 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.4)] transition duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_28px_60px_-32px_rgba(15,23,42,0.35)] ${
               plan.featured
-                ? "border-zinc-950 shadow-2xl shadow-zinc-300/80"
+                ? "border-zinc-950 ring-1 ring-zinc-950/10"
                 : "border-zinc-200"
             }`}
           >
@@ -80,7 +100,8 @@ export default function Pricing() {
                 </p>
               </div>
               {plan.featured ? (
-                <span className="rounded-lg bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-white">
+                <span className="inline-flex items-center gap-1 rounded-full bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-white">
+                  <Star aria-hidden="true" className="h-3.5 w-3.5 fill-current" />
                   Popular
                 </span>
               ) : null}
@@ -93,19 +114,21 @@ export default function Pricing() {
               <span className="pb-2 text-sm font-medium text-zinc-500">USD</span>
             </div>
 
-            <ul className="mt-8 space-y-4 text-sm text-zinc-700">
+            <ul className="mt-8 flex-1 space-y-4 text-sm text-zinc-700">
               {plan.features.map((feature) => (
                 <li key={feature} className="flex gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                    <Check aria-hidden="true" className="h-3.5 w-3.5" />
+                  </span>
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-row gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={getStartOrderHref(plan.planKey)}
-                className="inline-flex h-12 flex-1 items-center justify-center rounded-lg bg-zinc-950 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2"
+                className="inline-flex min-h-12 flex-1 items-center justify-center rounded-2xl bg-zinc-950 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2"
               >
                 Buy Now
               </Link>
@@ -114,16 +137,10 @@ export default function Pricing() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Contact us on WhatsApp about the ${plan.name}`}
-                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#25D366] text-white shadow-sm transition hover:bg-[#20bd5a] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-4 text-zinc-950 shadow-sm transition hover:bg-[#20bd5a] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 sm:w-auto"
               >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 32 32"
-                  fill="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path d="M16.04 3.2A12.74 12.74 0 0 0 5.26 22.73L3.6 28.8l6.22-1.63A12.74 12.74 0 1 0 16.04 3.2Zm0 23.3a10.52 10.52 0 0 1-5.36-1.47l-.38-.22-3.69.97.99-3.6-.25-.37a10.51 10.51 0 1 1 8.69 4.69Zm5.77-7.88c-.32-.16-1.88-.93-2.17-1.04-.29-.1-.5-.16-.71.16-.21.31-.82 1.04-1 1.25-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.2-.18-.31-.02-.48.14-.64.14-.14.32-.37.48-.55.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.64s1.13 3.06 1.29 3.27c.16.21 2.23 3.4 5.4 4.77.75.32 1.34.52 1.8.66.76.24 1.45.21 1.99.13.61-.09 1.88-.77 2.14-1.51.26-.75.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37Z" />
-                </svg>
+                <MessageCircleMore aria-hidden="true" className="h-5 w-5" />
+                <span className="sm:hidden">WhatsApp</span>
               </a>
             </div>
           </article>

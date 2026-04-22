@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookOpenText, MapPinned, NotebookText } from "lucide-react";
 import { locationEntries } from "@/lib/locations";
 import { buildMetadata } from "@/lib/seo";
 
@@ -43,7 +44,8 @@ export default function BlogIndexPage() {
   return (
     <div className="bg-white px-6 py-20 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+        <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <BookOpenText aria-hidden="true" className="h-4 w-4" />
           Blog
         </p>
         <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
@@ -61,7 +63,7 @@ export default function BlogIndexPage() {
             <Link
               key={post.href}
               href={post.href}
-              className="rounded-lg border border-zinc-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/70"
+              className="rounded-[2rem] border border-zinc-200 bg-white p-7 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] transition hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_28px_60px_-34px_rgba(15,23,42,0.35)]"
             >
               <h2 className="text-2xl font-semibold text-zinc-950">
                 {post.title}
@@ -72,7 +74,7 @@ export default function BlogIndexPage() {
             </Link>
           ))}
         </div>
-        <section className="mt-16 rounded-2xl border border-zinc-200 bg-zinc-50 p-8">
+        <section className="mt-16 rounded-[2rem] border border-zinc-200 bg-zinc-50 p-8">
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
             Keep the research connected
           </h2>
@@ -125,6 +127,32 @@ export default function BlogIndexPage() {
               businesses still use in search, including GMB reviews, Google My
               Business reviews, and Google Business Profile reviews.
             </p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href={serviceLinks[0].href}
+              className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+            >
+              <NotebookText aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+              {serviceLinks[0].name}
+            </Link>
+            <Link
+              href={serviceLinks[1].href}
+              className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+            >
+              <NotebookText aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+              {serviceLinks[1].name}
+            </Link>
+            {featuredCities.map((city) => (
+              <Link
+                key={city.href}
+                href={city.href}
+                className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+              >
+                <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                {city.cityName} Reviews
+              </Link>
+            ))}
           </div>
         </section>
       </div>

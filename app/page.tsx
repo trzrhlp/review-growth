@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import Button from "@/components/Button";
 import FAQ from "@/components/FAQ";
+import { CheckCircle2, MapPinned, ShieldCheck, Star } from "lucide-react";
 import { whatsappHref } from "@/lib/contact";
 import { buildMetadata } from "@/lib/seo";
 
@@ -17,27 +18,27 @@ const howItWorks = [
     title: "Choose a plan",
     description:
       "Pick the review growth package that matches your current goals, market, and pace.",
-    icon: "01",
+    icon: MapPinned,
   },
   {
     title: "Share your details",
     description:
       "Share your Google Business Profile link, location focus, and the customer feedback priorities behind your Google Business Profile reviews.",
-    icon: "02",
+    icon: ShieldCheck,
   },
   {
     title: "Launch a structured plan",
     description:
       "Use a measured review growth and reputation management process that supports steady progress over time.",
-    icon: "03",
+    icon: Star,
   },
 ];
 
 const advantages = [
-  "Location targeting",
-  "Reputation management",
-  "Customer feedback strategy",
-  "Review generation support",
+  { title: "Location targeting", icon: MapPinned },
+  { title: "Reputation management", icon: ShieldCheck },
+  { title: "Customer feedback strategy", icon: CheckCircle2 },
+  { title: "Review generation support", icon: Star },
 ];
 
 export default function Home() {
@@ -59,10 +60,10 @@ export default function Home() {
             {howItWorks.map((step) => (
               <article
                 key={step.title}
-                className="rounded-lg border border-zinc-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-200/70"
+                className="rounded-[2rem] border border-zinc-200 bg-white p-7 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] transition duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_28px_60px_-34px_rgba(15,23,42,0.35)]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-950 text-sm font-bold text-white">
-                  {step.icon}
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-950 text-sm font-bold text-white">
+                  <step.icon aria-hidden="true" className="h-5 w-5" />
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-zinc-950">
                   {step.title}
@@ -99,25 +100,14 @@ export default function Home() {
           <div className="grid gap-4 sm:grid-cols-2">
             {advantages.map((advantage) => (
               <div
-                key={advantage}
-                className="flex items-center gap-4 rounded-lg border border-zinc-200 bg-white p-5 shadow-sm"
+                key={advantage.title}
+                className="flex items-center gap-4 rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="h-5 w-5"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.2 7.26a1 1 0 0 1-1.42 0L3.29 9.124A1 1 0 1 1 4.71 7.716l4.09 4.12 6.49-6.54a1 1 0 0 1 1.414-.006Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <advantage.icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <p className="text-lg font-semibold text-zinc-950">
-                  {advantage}
+                  {advantage.title}
                 </p>
               </div>
             ))}
@@ -131,7 +121,10 @@ export default function Home() {
             ["500+", "Businesses Supported"],
             ["10,000+", "Feedback Touchpoints Guided"],
           ].map(([value, label]) => (
-            <div key={label} className="rounded-lg bg-zinc-950 p-10 text-white">
+            <div
+              key={label}
+              className="rounded-[2rem] bg-zinc-950 p-10 text-white shadow-[0_28px_70px_-36px_rgba(15,23,42,0.75)]"
+            >
               <p className="text-5xl font-semibold tracking-tight">{value}</p>
               <p className="mt-3 text-lg text-zinc-300">{label}</p>
             </div>
@@ -144,7 +137,7 @@ export default function Home() {
       <FAQ className="bg-white" />
 
       <section className="bg-white px-6 py-24 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-lg bg-zinc-950 px-8 py-14 text-center shadow-2xl shadow-zinc-300">
+        <div className="mx-auto max-w-5xl rounded-[2rem] bg-zinc-950 px-8 py-14 text-center shadow-[0_28px_70px_-32px_rgba(15,23,42,0.75)]">
           <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Improve your review presence with a focused plan.
           </h2>

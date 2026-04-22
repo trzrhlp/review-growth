@@ -2,6 +2,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import FAQ, { type FAQItem } from "@/components/FAQ";
 import { locationEntries } from "@/lib/locations";
+import { MapPinned, NotebookText, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 type ArticleSection = {
@@ -71,7 +72,8 @@ export default function ArticlePage({
             ]}
             className="mb-6"
           />
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <ShieldCheck aria-hidden="true" className="h-4 w-4" />
             {eyebrow}
           </p>
           <h1 className="mt-5 text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
@@ -90,7 +92,10 @@ export default function ArticlePage({
       <article className="px-6 py-16 lg:px-8">
         <div className="mx-auto max-w-3xl space-y-12">
           {sections.map((section) => (
-            <section key={section.heading}>
+            <section
+              key={section.heading}
+              className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] sm:p-8"
+            >
               <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
                 {section.heading}
               </h2>
@@ -102,7 +107,7 @@ export default function ArticlePage({
             </section>
           ))}
 
-          <section className="rounded-lg border border-zinc-200 bg-zinc-50 p-6">
+          <section className="rounded-[2rem] border border-zinc-200 bg-zinc-50/90 p-6 sm:p-8">
             <h2 className="text-2xl font-semibold text-zinc-950">
               Connect services, cities, and guides
             </h2>
@@ -184,8 +189,9 @@ export default function ArticlePage({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
                 >
+                  <NotebookText aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {link.name}
                 </Link>
               ))}
@@ -193,8 +199,9 @@ export default function ArticlePage({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
                 >
+                  <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {link.name}
                 </Link>
               ))}
@@ -210,7 +217,7 @@ export default function ArticlePage({
       />
 
       <section className="px-6 pb-24 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-lg bg-zinc-950 px-8 py-14 text-center text-white shadow-2xl shadow-zinc-300">
+        <div className="mx-auto max-w-5xl rounded-[2rem] bg-zinc-950 px-8 py-14 text-center text-white shadow-[0_28px_70px_-32px_rgba(15,23,42,0.75)]">
           <h2 className="text-4xl font-semibold tracking-tight">{ctaTitle}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
             {ctaText}

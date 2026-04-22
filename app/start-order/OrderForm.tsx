@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { ChevronDown, ClipboardList, Mail, Phone, Store } from "lucide-react";
 import Button from "@/components/Button";
 import { getPlanLabel, type PlanName } from "@/lib/plans";
 
@@ -110,17 +111,18 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
       <div>
         <label
           htmlFor="plan"
-          className="block text-sm font-semibold text-zinc-900"
+          className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-zinc-900"
         >
+          <ClipboardList aria-hidden="true" className="h-4 w-4 text-zinc-500" />
           Plan
         </label>
-        <div className="relative mt-2">
+        <div className="relative">
           <select
             id="plan"
             name="plan"
             value={plan}
             onChange={(event) => setPlan(event.target.value as PlanName)}
-            className="w-full appearance-none rounded-lg border border-zinc-300 bg-white px-4 py-3 pr-10 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+            className="min-h-12 w-full appearance-none rounded-2xl border border-zinc-300 bg-white px-4 py-3 pr-10 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
           >
             <option value="Starter">Starter Pack</option>
             <option value="Growth">Growth Pack</option>
@@ -130,7 +132,7 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-zinc-500"
           >
-            ▾
+            <ChevronDown className="h-4 w-4" />
           </span>
         </div>
       </div>
@@ -138,8 +140,9 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
       <div>
         <label
           htmlFor="fullName"
-          className="block text-sm font-semibold text-zinc-900"
+          className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-zinc-900"
         >
+          <Store aria-hidden="true" className="h-4 w-4 text-zinc-500" />
           Full Name
         </label>
         <input
@@ -151,15 +154,16 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           minLength={2}
           value={formData.fullName}
           onChange={(event) => updateField("fullName", event.target.value)}
-          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          className="min-h-12 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>
 
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-semibold text-zinc-900"
+          className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-zinc-900"
         >
+          <Mail aria-hidden="true" className="h-4 w-4 text-zinc-500" />
           Email
         </label>
         <input
@@ -170,15 +174,16 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           required
           value={formData.email}
           onChange={(event) => updateField("email", event.target.value)}
-          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          className="min-h-12 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>
 
       <div>
         <label
           htmlFor="phone"
-          className="block text-sm font-semibold text-zinc-900"
+          className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-zinc-900"
         >
+          <Phone aria-hidden="true" className="h-4 w-4 text-zinc-500" />
           Phone Number
         </label>
         <input
@@ -190,15 +195,16 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           required
           value={formData.phone}
           onChange={(event) => updateField("phone", event.target.value)}
-          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          className="min-h-12 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>
 
       <div>
         <label
           htmlFor="businessNameOrGoogleMapsLink"
-          className="block text-sm font-semibold text-zinc-900"
+          className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-zinc-900"
         >
+          <Store aria-hidden="true" className="h-4 w-4 text-zinc-500" />
           Business Name or Google Maps Link
         </label>
         <input
@@ -213,12 +219,12 @@ export default function OrderForm({ selectedPlan }: OrderFormProps) {
           onChange={(event) =>
             updateField("businessNameOrGoogleMapsLink", event.target.value)
           }
-          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
+          className="min-h-12 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm outline-none transition focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10"
         />
       </div>
 
       {errorMessage ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {errorMessage}
         </div>
       ) : null}

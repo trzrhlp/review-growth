@@ -8,6 +8,7 @@ import {
   type Location,
 } from "@/lib/locations";
 import { buildMetadata } from "@/lib/seo";
+import { BarChart3, MapPinned, NotebookText, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -415,7 +416,8 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             ]}
             className="mb-6 text-left"
           />
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <MapPinned aria-hidden="true" className="h-4 w-4" />
             {location.cityName}, {location.countryName}
           </p>
           <h1 className="mt-5 text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
@@ -456,7 +458,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
           ].map(([title, description]) => (
             <article
               key={title}
-              className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm"
+              className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)]"
             >
               <h2 className="text-xl font-semibold text-zinc-950">{title}</h2>
               <p className="mt-3 leading-7 text-zinc-600">{description}</p>
@@ -467,8 +469,9 @@ export default function GoogleReviewsPage({ params }: PageProps) {
 
       <section className="px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-5xl space-y-12">
-          <section>
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <section className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] sm:p-8">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+              <BarChart3 aria-hidden="true" className="h-4 w-4" />
               Local SEO focus
             </p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-950">
@@ -504,7 +507,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             </div>
           </section>
 
-          <section>
+          <section className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] sm:p-8">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
               Popular business categories in {location.cityName}
             </h2>
@@ -531,7 +534,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             </div>
           </section>
 
-          <section>
+          <section className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] sm:p-8">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
               Why businesses in {location.cityName} need more reviews
             </h2>
@@ -547,7 +550,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-zinc-200 bg-zinc-50 p-8">
+          <section className="rounded-[2rem] border border-zinc-200 bg-zinc-50 p-8">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
               Build a stronger {location.cityName} review presence
             </h2>
@@ -590,8 +593,9 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
                 >
+                  <ShieldCheck aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {link.name}
                 </Link>
               ))}
@@ -599,8 +603,9 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
                 >
+                  <NotebookText aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {link.name}
                 </Link>
               ))}
@@ -608,8 +613,9 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 <Link
                   key={relatedLocation.href}
                   href={relatedLocation.href}
-                  className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
                 >
+                  <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {relatedLocation.cityName} Reviews
                 </Link>
               ))}
@@ -624,7 +630,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
       />
 
       <section className="px-6 pb-24 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-lg bg-zinc-950 px-8 py-14 text-center text-white shadow-2xl shadow-zinc-300">
+        <div className="mx-auto max-w-5xl rounded-[2rem] bg-zinc-950 px-8 py-14 text-center text-white shadow-[0_28px_70px_-32px_rgba(15,23,42,0.75)]">
           <h2 className="text-4xl font-semibold tracking-tight">
             Ready to grow your Google reviews in {location.cityName}?
           </h2>

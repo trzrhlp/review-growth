@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ChevronDown, MapPinned, Menu, X } from "lucide-react";
 import { locationGroups } from "@/lib/locations";
 
 export default function Header() {
@@ -16,15 +17,18 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/95 shadow-sm shadow-zinc-200/70 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/60 bg-white/85 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.65)] backdrop-blur-xl">
       <nav
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-zinc-950 sm:text-xl"
+          className="inline-flex items-center gap-3 text-lg font-semibold tracking-tight text-zinc-950 sm:text-xl"
         >
+          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#111827,#0f766e)] text-white shadow-lg shadow-teal-900/20">
+            <MapPinned aria-hidden="true" className="h-5 w-5" />
+          </span>
           Local Reviews Boost
         </Link>
 
@@ -36,26 +40,11 @@ export default function Header() {
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsMobileMenuOpen((open) => !open)}
         >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="h-5 w-5"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                fillRule="evenodd"
-                d="M4.22 4.22a.75.75 0 0 1 1.06 0L10 8.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L11.06 10l4.72 4.72a.75.75 0 0 1-1.06 1.06L10 11.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L8.94 10 4.22 5.28a.75.75 0 0 1 0-1.06Z"
-                clipRule="evenodd"
-              />
-            ) : (
-              <path
-                fillRule="evenodd"
-                d="M3 5.75A.75.75 0 0 1 3.75 5h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 5.75Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 10Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 14.25Z"
-                clipRule="evenodd"
-              />
-            )}
-          </svg>
+          {isMobileMenuOpen ? (
+            <X aria-hidden="true" className="h-5 w-5" />
+          ) : (
+            <Menu aria-hidden="true" className="h-5 w-5" />
+          )}
         </button>
 
         <div className="hidden items-center gap-5 sm:flex sm:gap-8">
@@ -79,22 +68,14 @@ export default function Header() {
               aria-haspopup="true"
             >
               Locations
-              <svg
+              <ChevronDown
                 aria-hidden="true"
-                viewBox="0 0 20 20"
-                fill="currentColor"
                 className="h-4 w-4 transition group-hover:rotate-180"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              />
             </button>
 
             <div className="pointer-events-none invisible absolute right-0 top-full w-[min(34rem,calc(100vw-2rem))] pt-4 opacity-0 transition duration-150 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
-              <div className="grid gap-5 rounded-lg border border-zinc-200 bg-white p-5 shadow-xl shadow-zinc-950/10 sm:grid-cols-3">
+              <div className="grid gap-5 rounded-3xl border border-zinc-200/80 bg-white/95 p-5 shadow-2xl shadow-zinc-950/10 sm:grid-cols-3">
                 {locationGroups.map((group) => (
                   <div key={group.country}>
                     <p className="mb-3 text-xs font-bold uppercase tracking-wide text-zinc-500">
@@ -105,7 +86,7 @@ export default function Header() {
                         <Link
                           key={location.href}
                           href={location.href}
-                          className="block rounded-md px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 hover:text-zinc-950"
+                          className="block rounded-2xl px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 hover:text-zinc-950"
                         >
                           {location.cityName}
                         </Link>
@@ -121,7 +102,7 @@ export default function Header() {
 
       <div
         id="mobile-site-menu"
-        className={`${isMobileMenuOpen ? "pointer-events-auto grid-rows-[1fr] border-t border-zinc-200 opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"} grid overflow-hidden bg-white shadow-lg shadow-zinc-950/5 transition-[grid-template-rows,opacity] duration-200 sm:hidden`}
+        className={`${isMobileMenuOpen ? "pointer-events-auto grid-rows-[1fr] border-t border-zinc-200 opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"} grid overflow-hidden bg-white/95 shadow-lg shadow-zinc-950/5 transition-[grid-template-rows,opacity] duration-200 sm:hidden`}
       >
         <div className="min-h-0">
           <div className="mx-auto max-w-7xl px-4 py-4">
@@ -140,13 +121,13 @@ export default function Header() {
               </Link>
               <Link
                 href="/start-order"
-                className="flex min-h-11 items-center rounded-lg bg-zinc-950 px-4 text-base font-semibold text-white transition hover:bg-zinc-800"
+                className="flex min-h-12 items-center rounded-2xl bg-zinc-950 px-4 text-base font-semibold text-white transition hover:bg-zinc-800"
               >
                 Start Order
               </Link>
             </div>
 
-            <div className="mt-4 rounded-xl border border-zinc-200 bg-zinc-50">
+            <div className="mt-4 rounded-3xl border border-zinc-200 bg-zinc-50/80">
               <button
                 type="button"
                 className="flex min-h-12 w-full items-center justify-between gap-3 px-4 text-left text-base font-semibold text-zinc-950"
@@ -155,18 +136,10 @@ export default function Header() {
                 onClick={() => setIsLocationsOpen((open) => !open)}
               >
                 Locations
-                <svg
+                <ChevronDown
                   aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
                   className={`h-5 w-5 transition ${isLocationsOpen ? "rotate-180" : ""}`}
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                />
               </button>
 
               <div
@@ -185,7 +158,7 @@ export default function Header() {
                             <Link
                               key={location.href}
                               href={location.href}
-                              className="flex min-h-11 items-center rounded-lg bg-white px-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-100"
+                              className="flex min-h-12 items-center rounded-2xl bg-white px-4 text-sm font-medium text-zinc-800 transition hover:bg-zinc-100"
                             >
                               {location.cityName}
                             </Link>

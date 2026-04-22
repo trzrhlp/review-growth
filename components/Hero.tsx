@@ -1,11 +1,15 @@
+import Image from "next/image";
+import { BarChart3, MapPinned, ShieldCheck, Star } from "lucide-react";
 import Button from "@/components/Button";
 
 export default function Hero() {
   return (
-    <section className="relative bg-white">
-      <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-24">
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(20,184,166,0.18),transparent_60%)]" />
+      <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:py-24">
         <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
-          <p className="mb-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/90 px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm">
+            <ShieldCheck aria-hidden="true" className="h-4 w-4 text-teal-700" />
             Review growth and reputation management
           </p>
           <h1 className="text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl">
@@ -16,6 +20,21 @@ export default function Hero() {
             with a structured, location-aware strategy for GMB reviews, Google
             My Business reviews, and Google Business Profile reviews.
           </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            {[
+              { icon: Star, label: "Reviews" },
+              { icon: MapPinned, label: "Locations" },
+              { icon: BarChart3, label: "Growth" },
+            ].map((item) => (
+              <span
+                key={item.label}
+                className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm"
+              >
+                <item.icon aria-hidden="true" className="h-4 w-4 text-zinc-950" />
+                {item.label}
+              </span>
+            ))}
+          </div>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
             <Button href="/start-order">Get Started</Button>
             <Button href="#pricing" variant="secondary">
@@ -25,8 +44,18 @@ export default function Hero() {
         </div>
 
         <div className="mx-auto w-full max-w-xl lg:mx-0">
-          <div className="rounded-lg border border-zinc-200 bg-white p-5 shadow-2xl shadow-zinc-200/70">
-            <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
+          <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/90 p-5 shadow-[0_28px_80px_-32px_rgba(15,23,42,0.35)] backdrop-blur">
+            <div className="overflow-hidden rounded-[1.5rem] border border-zinc-100">
+              <Image
+                src="/review-growth-dashboard.svg"
+                alt="Illustration of local review growth metrics and location planning."
+                width={720}
+                height={420}
+                priority
+                className="w-full bg-zinc-50"
+              />
+            </div>
+            <div className="mt-5 flex items-center justify-between border-b border-zinc-100 pb-4">
               <div>
                 <p className="text-sm font-medium text-zinc-500">
                   Local review campaign
@@ -63,7 +92,7 @@ export default function Hero() {
               ].map(([title, detail, status]) => (
                 <div
                   key={title}
-                  className="flex items-center justify-between gap-4 rounded-lg border border-zinc-100 p-4"
+                  className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-100 bg-zinc-50/70 p-4"
                 >
                   <div>
                     <p className="font-medium text-zinc-950">{title}</p>

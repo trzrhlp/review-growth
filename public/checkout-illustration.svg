@@ -1,0 +1,20 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="520" rx="32" fill="#0F172A"/>
+  <rect x="34" y="34" width="692" height="452" rx="28" fill="#111827"/>
+  <rect x="70" y="72" width="286" height="378" rx="24" fill="white"/>
+  <text x="100" y="118" fill="#111827" font-family="Arial, sans-serif" font-size="26" font-weight="700">Plan</text>
+  <rect x="100" y="138" width="226" height="54" rx="18" fill="#F4F4F5"/>
+  <text x="122" y="171" fill="#111827" font-family="Arial, sans-serif" font-size="18" font-weight="700">Starter Pack</text>
+  <rect x="100" y="220" width="226" height="54" rx="18" fill="#F4F4F5"/>
+  <text x="122" y="253" fill="#52525B" font-family="Arial, sans-serif" font-size="17">Full Name</text>
+  <rect x="100" y="292" width="226" height="54" rx="18" fill="#F4F4F5"/>
+  <text x="122" y="325" fill="#52525B" font-family="Arial, sans-serif" font-size="17">Email</text>
+  <rect x="100" y="364" width="226" height="54" rx="18" fill="#111827"/>
+  <text x="119" y="397" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="700">Continue to payment</text>
+  <rect x="390" y="96" width="300" height="166" rx="24" fill="#14B8A6"/>
+  <text x="420" y="140" fill="white" font-family="Arial, sans-serif" font-size="26" font-weight="700">Hosted payment page</text>
+  <text x="420" y="184" fill="#E6FFFB" font-family="Arial, sans-serif" font-size="18">Coin and network selection stays here.</text>
+  <rect x="390" y="292" width="300" height="128" rx="24" fill="#FFF7ED"/>
+  <text x="420" y="334" fill="#9A3412" font-family="Arial, sans-serif" font-size="24" font-weight="700">Fixed USD pricing</text>
+  <text x="420" y="370" fill="#7C2D12" font-family="Arial, sans-serif" font-size="18">Order details, webhook handling, and follow-up stay unchanged.</text>
+</svg>

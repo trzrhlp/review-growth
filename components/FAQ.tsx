@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import JsonLd from "@/components/JsonLd";
 import { buildFaqSchema } from "@/lib/schema";
+import { CircleHelp, Plus } from "lucide-react";
 
 export type FAQItem = {
   question: string;
@@ -78,27 +79,28 @@ export default function FAQ({
     <section className={`px-6 py-20 lg:px-8 ${className}`.trim()}>
       <JsonLd data={buildFaqSchema(items)} />
       <div className="mx-auto max-w-4xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+        <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <CircleHelp aria-hidden="true" className="h-4 w-4" />
           FAQ
         </p>
         <h2 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-950">
           {title}
         </h2>
         <p className="mt-4 text-lg leading-8 text-zinc-600">{intro}</p>
-        <div className="mt-10 divide-y divide-zinc-200 rounded-lg border border-zinc-200 bg-white">
+        <div className="mt-10 divide-y divide-zinc-200 rounded-[2rem] border border-zinc-200 bg-white/95 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.5)]">
           {items.map((item) => (
             <details key={item.question} className="group p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-zinc-950">
                 {item.question}
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition group-open:rotate-45">
-                  +
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-700 transition group-open:rotate-45">
+                  <Plus aria-hidden="true" className="h-4 w-4" />
                 </span>
               </summary>
               <p className="mt-4 leading-7 text-zinc-600">{item.answer}</p>
             </details>
           ))}
         </div>
-        <div className="mt-10 rounded-lg border border-zinc-200 bg-zinc-50 px-6 py-8 text-center">
+        <div className="mt-10 rounded-[2rem] border border-zinc-200 bg-zinc-50/90 px-6 py-8 text-center">
           <h3 className="text-2xl font-semibold tracking-tight text-zinc-950">
             Ready to improve your review presence?
           </h3>

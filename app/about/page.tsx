@@ -1,4 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { BadgeCheck } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -11,7 +12,7 @@ export const metadata = buildMetadata({
 export default function AboutPage() {
   return (
     <div className="bg-white px-6 py-20 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-4xl rounded-[2rem] border border-zinc-200 bg-white/95 p-8 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.5)] sm:p-10">
         <Breadcrumbs
           items={[
             { name: "Home", path: "/" },
@@ -19,7 +20,8 @@ export default function AboutPage() {
           ]}
           className="mb-6"
         />
-        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+        <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <BadgeCheck aria-hidden="true" className="h-4 w-4" />
           About
         </p>
         <h1 className="mt-5 text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">

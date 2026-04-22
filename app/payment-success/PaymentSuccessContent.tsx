@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BadgeCheck, Clock3 } from "lucide-react";
 import Button from "@/components/Button";
 import { whatsappNumber } from "@/lib/contact";
 import AutoRedirectToWhatsApp from "./AutoRedirectToWhatsApp";
@@ -110,8 +111,13 @@ export default function PaymentSuccessContent({
   const isFailed = order?.status === "payment_failed";
 
   return (
-    <section className="mx-auto w-full max-w-2xl rounded-lg border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-200/60 sm:p-10">
-      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+    <section className="mx-auto w-full max-w-2xl rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_28px_70px_-40px_rgba(15,23,42,0.45)] sm:p-10">
+      <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+        {isPaid ? (
+          <BadgeCheck aria-hidden="true" className="h-4 w-4 text-emerald-600" />
+        ) : (
+          <Clock3 aria-hidden="true" className="h-4 w-4 text-amber-600" />
+        )}
         Local Reviews Boost
       </p>
       <h1 className="mt-4 text-3xl font-semibold text-zinc-950 sm:text-4xl">
@@ -124,13 +130,13 @@ export default function PaymentSuccessContent({
       </p>
 
       {isFailed ? (
-        <div className="mt-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           The payment did not complete successfully. Please return to checkout and
           try again.
         </div>
       ) : null}
 
-      <div className="mt-8 grid gap-4 rounded-lg border border-zinc-200 bg-zinc-50 p-6 sm:grid-cols-2">
+      <div className="mt-8 grid gap-4 rounded-[1.5rem] border border-zinc-200 bg-zinc-50 p-6 sm:grid-cols-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
             Selected plan
