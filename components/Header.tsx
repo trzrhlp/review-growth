@@ -29,20 +29,12 @@ export default function Header() {
           aria-label="LocalReviewsBoost home"
         >
           <Image
-            src="/logo-icon.svg"
+            src="/logo.png?v=2"
             alt="LocalReviewsBoost"
-            width={40}
+            width={120}
             height={40}
             priority
-            className="h-10 w-10 sm:hidden"
-          />
-          <Image
-            src="/logo.svg"
-            alt="LocalReviewsBoost"
-            width={720}
-            height={160}
-            priority
-            className="hidden h-auto w-[184px] sm:block md:w-[210px]"
+            className="logo"
           />
         </Link>
 

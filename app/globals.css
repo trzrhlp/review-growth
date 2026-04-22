@@ -30,6 +30,7 @@ html {
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 *::selection {
@@ -42,6 +43,28 @@ video,
 canvas {
   display: block;
   max-width: 100%;
+}
+
+.logo {
+  display: block;
+  max-width: 120px;
+  height: auto;
+}
+
+.footer {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.footer-cities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.footer-cities a {
+  display: block;
+  white-space: nowrap;
 }
 
 a,

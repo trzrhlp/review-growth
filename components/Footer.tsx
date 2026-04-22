@@ -33,13 +33,16 @@ const legalLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const featuredLocationGroups = locationGroups.map((group) => ({
-    ...group,
-    links: group.links.slice(0, 8),
-  }));
+  const featuredLocations = locationGroups.flatMap((group) =>
+    group.links.slice(0, 8).map((link) => ({
+      ...link,
+      country: group.country,
+      countryLabel: group.countryLabel,
+    })),
+  );
 
   return (
-    <footer className="border-t border-zinc-200 bg-zinc-950 text-white">
+    <footer className="footer border-t border-zinc-200 bg-zinc-950 text-white">
       <div className="mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-white/5 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -114,34 +117,29 @@ export default function Footer() {
             <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
               Locations
             </h2>
-            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
-              {featuredLocationGroups.map((group) => (
-                <div key={group.country}>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                    <Link href={group.href} className="hover:text-white">
-                      {group.countryLabel}
-                    </Link>
-                  </p>
-                  <ul className="mt-3 space-y-2">
-                    {group.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
-                        >
-                          {link.cityName}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="mt-4">
+              <div className="footer-cities">
+                {featuredLocations.map((location) => (
                   <Link
-                    href={group.href}
-                    className="mt-4 inline-flex min-h-11 items-center py-1 text-sm font-medium text-zinc-300 underline underline-offset-4 transition hover:text-white sm:min-h-0 sm:py-0"
+                    key={location.href}
+                    href={location.href}
+                    className="min-h-11 py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
                   >
-                    View all cities
+                    {location.cityName}
                   </Link>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {locationGroups.map((group) => (
+                  <Link
+                    key={group.country}
+                    href={group.href}
+                    className="inline-flex min-h-11 items-center py-1 text-sm font-medium text-zinc-300 underline underline-offset-4 transition hover:text-white sm:min-h-0 sm:py-0"
+                  >
+                    All {group.countryLabel} cities
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
