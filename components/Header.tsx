@@ -20,19 +20,19 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/60 bg-white/85 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.65)] backdrop-blur-xl">
       <nav
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-16 items-center justify-between px-4"
         aria-label="Main navigation"
       >
         <Link
           href="/"
-          className="inline-flex items-center"
+          className="flex h-full items-center"
           aria-label="LocalReviewsBoost home"
         >
           <Image
-            src="/logo.png?v=2"
-            alt="LocalReviewsBoost"
-            width={120}
-            height={40}
+            src="/logo.png?v=3"
+            alt="Logo"
+            width={140}
+            height={50}
             priority
             className="logo"
           />

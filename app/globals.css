@@ -47,8 +47,10 @@ canvas {
 
 .logo {
   display: block;
-  max-width: 120px;
   height: auto;
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer {
