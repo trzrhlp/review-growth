@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { locationEntries } from "@/lib/locations";
+import { blogPostEntries } from "@/lib/blogRegistry";
+import { countryEntries, locationEntries } from "@/lib/locations";
 import { absoluteUrl } from "@/lib/seo";
 
 const staticRoutes = [
@@ -12,19 +13,18 @@ const staticRoutes = [
   "/google-my-business-review-service",
   "/google-review-service",
   "/increase-google-reviews",
+  "/privacy-policy",
+  "/terms-and-conditions",
+  "/refund-policy",
+  "/disclaimer",
   "/start-order",
-];
-
-const blogRoutes = [
-  "/blog/how-to-get-google-reviews",
-  "/blog/how-to-increase-google-reviews",
-  "/blog/how-to-improve-google-rating",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
-    ...blogRoutes,
+    ...blogPostEntries.map((post) => post.href),
+    ...countryEntries.map((country) => country.href),
     ...locationEntries.map((location) => location.href),
   ].map((path) => ({
     url: absoluteUrl(path).toString(),

@@ -1,7 +1,8 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import FAQ, { type FAQItem } from "@/components/FAQ";
-import { locationEntries } from "@/lib/locations";
+import { blogPostEntries } from "@/lib/blogRegistry";
+import { countryEntries, locationEntries } from "@/lib/locations";
 import { MapPinned, NotebookText, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
@@ -32,24 +33,16 @@ const serviceLinks = [
   { name: "Google Review Service", href: "/google-review-service" },
 ];
 
-const blogLinks = [
-  {
-    name: "How to Get Google Reviews",
-    href: "/blog/how-to-get-google-reviews",
-  },
-  {
-    name: "How to Increase Google Reviews",
-    href: "/blog/how-to-increase-google-reviews",
-  },
-  {
-    name: "How to Improve Google Rating",
-    href: "/blog/how-to-improve-google-rating",
-  },
-];
+const blogLinks = blogPostEntries.map((post) => ({
+  name: post.title,
+  href: post.href,
+}));
 
 const featuredCities = locationEntries.filter((location) =>
   ["new-york", "london", "sydney", "los-angeles"].includes(location.city),
 );
+
+const featuredHubs = countryEntries;
 
 export default function ArticlePage({
   eyebrow,
@@ -168,13 +161,37 @@ export default function ArticlePage({
                 </Link>{" "}
                 and{" "}
                 <Link
-                  href={blogLinks[2].href}
+                  href={blogLinks[3].href}
                   className="font-semibold text-zinc-950 underline underline-offset-4"
                 >
-                  {blogLinks[2].name}
+                  {blogLinks[3].name}
                 </Link>{" "}
                 so visitors can move naturally from research to the right next
                 step.
+              </p>
+              <p>
+                The country hubs for{" "}
+                <Link
+                  href={featuredHubs[0].href}
+                  className="font-semibold text-zinc-950 underline underline-offset-4"
+                >
+                  {featuredHubs[0].countryLabel}
+                </Link>
+                ,{" "}
+                <Link
+                  href={featuredHubs[1].href}
+                  className="font-semibold text-zinc-950 underline underline-offset-4"
+                >
+                  {featuredHubs[1].countryLabel}
+                </Link>
+                , and{" "}
+                <Link
+                  href={featuredHubs[2].href}
+                  className="font-semibold text-zinc-950 underline underline-offset-4"
+                >
+                  {featuredHubs[2].countryLabel}
+                </Link>{" "}
+                keep service pages connected to the wider city-page network.
               </p>
               <p>
                 Businesses still use a mix of terms here. Many businesses still
@@ -203,6 +220,16 @@ export default function ArticlePage({
                 >
                   <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                   {link.name}
+                </Link>
+              ))}
+              {featuredHubs.map((hub) => (
+                <Link
+                  key={hub.href}
+                  href={hub.href}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                >
+                  <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                  {hub.countryLabel} Hub
                 </Link>
               ))}
             </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpenText, MapPinned, NotebookText } from "lucide-react";
-import { locationEntries } from "@/lib/locations";
+import { blogPostEntries } from "@/lib/blogRegistry";
+import { countryEntries, locationEntries } from "@/lib/locations";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -10,27 +11,6 @@ export const metadata = buildMetadata({
   path: "/blog",
 });
 
-const posts = [
-  {
-    title: "How to Get Google Reviews",
-    href: "/blog/how-to-get-google-reviews",
-    description:
-      "Build a steady review request process that is easy for customers and useful for local SEO.",
-  },
-  {
-    title: "How to Increase Google Reviews",
-    href: "/blog/how-to-increase-google-reviews",
-    description:
-      "Create a repeatable workflow for increasing Google reviews without spammy tactics.",
-  },
-  {
-    title: "How to Improve Google Rating",
-    href: "/blog/how-to-improve-google-rating",
-    description:
-      "Improve ratings by fixing customer experience gaps and asking satisfied customers consistently.",
-  },
-];
-
 const serviceLinks = [
   { name: "Get More Google Reviews", href: "/get-more-google-reviews" },
   { name: "Google Review Service", href: "/google-review-service" },
@@ -39,6 +19,8 @@ const serviceLinks = [
 const featuredCities = locationEntries.filter((location) =>
   ["new-york", "london"].includes(location.city),
 );
+
+const featuredHubs = countryEntries;
 
 export default function BlogIndexPage() {
   return (
@@ -58,8 +40,8 @@ export default function BlogIndexPage() {
           for GMB reviews, even though Google My Business is now called Google
           Business Profile.
         </p>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {posts.map((post) => (
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {blogPostEntries.map((post) => (
             <Link
               key={post.href}
               href={post.href}
@@ -127,6 +109,30 @@ export default function BlogIndexPage() {
               businesses still use in search, including GMB reviews, Google My
               Business reviews, and Google Business Profile reviews.
             </p>
+            <p>
+              Browse broader market pages for{" "}
+              <Link
+                href={featuredHubs[0].href}
+                className="font-semibold text-zinc-950 underline underline-offset-4"
+              >
+                {featuredHubs[0].countryLabel}
+              </Link>
+              ,{" "}
+              <Link
+                href={featuredHubs[1].href}
+                className="font-semibold text-zinc-950 underline underline-offset-4"
+              >
+                {featuredHubs[1].countryLabel}
+              </Link>
+              , and{" "}
+              <Link
+                href={featuredHubs[2].href}
+                className="font-semibold text-zinc-950 underline underline-offset-4"
+              >
+                {featuredHubs[2].countryLabel}
+              </Link>{" "}
+              when you want city-level review growth options grouped by country.
+            </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -151,6 +157,16 @@ export default function BlogIndexPage() {
               >
                 <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
                 {city.cityName} Reviews
+              </Link>
+            ))}
+            {featuredHubs.map((hub) => (
+              <Link
+                key={hub.href}
+                href={hub.href}
+                className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+              >
+                <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                {hub.countryLabel} Hub
               </Link>
             ))}
           </div>

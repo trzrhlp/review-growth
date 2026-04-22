@@ -24,6 +24,13 @@ const companyLinks = [
   { name: "Blog", href: "/blog" },
 ];
 
+const legalLinks = [
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms and Conditions", href: "/terms-and-conditions" },
+  { name: "Refund Policy", href: "/refund-policy" },
+  { name: "Disclaimer", href: "/disclaimer" },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -56,7 +63,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-6">
         <div>
           <Link href="/" className="text-lg font-bold tracking-tight">
             Local Reviews Boost
@@ -107,7 +114,9 @@ export default function Footer() {
             {locationGroups.map((group) => (
               <div key={group.country}>
                 <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
-                  {group.countryLabel}
+                  <Link href={group.href} className="hover:text-white">
+                    {group.countryLabel}
+                  </Link>
                 </p>
                 <ul className="mt-2 grid grid-cols-2 gap-x-6 gap-y-2">
                   {group.links.map((link) => (
@@ -157,6 +166,24 @@ export default function Footer() {
           </h2>
           <ul className="mt-4 space-y-3">
             {companyLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center py-1 text-sm text-zinc-300 transition hover:text-white sm:min-h-0 sm:py-0"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-100">
+            Trust
+          </h2>
+          <ul className="mt-4 space-y-3">
+            {legalLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

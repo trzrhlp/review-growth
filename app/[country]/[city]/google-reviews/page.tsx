@@ -1,14 +1,23 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
-import FAQ from "@/components/FAQ";
+import FAQ, { type FAQItem } from "@/components/FAQ";
 import {
+  countryMeta,
+  getCountryEntry,
   getLocation,
   getRelatedLocations,
   locationEntries,
   type Location,
 } from "@/lib/locations";
+import { blogPostEntries } from "@/lib/blogRegistry";
 import { buildMetadata } from "@/lib/seo";
-import { BarChart3, MapPinned, NotebookText, ShieldCheck } from "lucide-react";
+import {
+  BarChart3,
+  MapPinned,
+  MessageSquareQuote,
+  NotebookText,
+  ShieldCheck,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -28,6 +37,29 @@ type CityProfile = {
   strategy: string;
   metaTitle: string;
   metaDescription: string;
+};
+
+type TestimonialCard = {
+  quote: string;
+  name: string;
+  business: string;
+};
+
+type ConversionContent = {
+  heroAddition: string;
+  heroHighlights: [string, string][];
+  testimonialIntro: string;
+  testimonials: TestimonialCard[];
+  faqTitle: string;
+  faqIntro: string;
+  faqItems: FAQItem[];
+  relatedCitySlugs: string[];
+  relatedBlogHrefs: string[];
+  midCtaTitle: string;
+  midCtaText: string;
+  finalCtaTitle: string;
+  finalCtaText: string;
+  finalCtaLabel: string;
 };
 
 const cityProfiles: Record<string, CityProfile> = {
@@ -343,23 +375,270 @@ const serviceLinks = [
   { name: "Google Review Service", href: "/google-review-service" },
 ];
 
-const blogLinks = [
-  {
-    name: "How to Get Google Reviews",
-    href: "/blog/how-to-get-google-reviews",
+const blogLinks = blogPostEntries.slice(0, 5).map((post) => ({
+  name: post.title,
+  href: post.href,
+}));
+
+const conversionContentByCity: Record<string, ConversionContent> = {
+  "uk/london": {
+    heroAddition:
+      "For busy London categories, stronger recent proof can remove hesitation before a prospect compares one more provider.",
+    heroHighlights: [
+      [
+        "Borough-level trust",
+        "Show current proof that helps buyers choose faster in crowded borough search results.",
+      ],
+      [
+        "Higher-intent enquiries",
+        "Give prospects enough confidence to move from comparison into a real call or booking.",
+      ],
+      [
+        "Clearer local fit",
+        "Support London-focused service pages with review signals that feel current and relevant.",
+      ],
+    ],
+    testimonialIntro:
+      "Simple feedback themes that matter when London businesses want review growth to support real enquiries.",
+    testimonials: [
+      {
+        quote:
+          "The plan felt clear and measured, which mattered more to us than anything flashy.",
+        name: "Practice manager",
+        business: "Private clinic, London",
+      },
+      {
+        quote:
+          "We wanted stronger proof before prospects reached the site, and this matched that goal.",
+        name: "Operations lead",
+        business: "Home services company, London",
+      },
+      {
+        quote:
+          "The city focus helped us think about how buyers compare options across nearby areas.",
+        name: "Founder",
+        business: "Agency, London",
+      },
+    ],
+    faqTitle: "Questions London businesses ask before starting",
+    faqIntro:
+      "Short answers for local teams that need stronger review proof without changing the rest of their funnel.",
+    faqItems: [
+      {
+        question: "Can this support multiple London boroughs?",
+        answer:
+          "Yes, the plan can be structured around the areas you serve so the review-growth approach stays aligned with how customers actually search across London.",
+      },
+      {
+        question: "Will this help if customers compare several nearby providers?",
+        answer:
+          "That is the main use case. Stronger recent reviews help reduce hesitation when buyers are scanning several similar listings in the same area.",
+      },
+      {
+        question: "Do London service businesses need a different pacing approach?",
+        answer:
+          "Usually yes. A measured pace matters more in dense markets where review recency is visible and prospects can compare providers quickly.",
+      },
+      {
+        question: "Can I start with one location and expand later?",
+        answer:
+          "Yes, many businesses start with one location or service area first, then widen the plan once the approach is working cleanly.",
+      },
+    ],
+    relatedCitySlugs: ["manchester", "birmingham", "leeds"],
+    relatedBlogHrefs: [
+      "/blog/how-to-get-google-reviews",
+      "/blog/google-business-profile-ranking-and-reviews",
+      "/blog/respond-to-negative-google-reviews",
+    ],
+    midCtaTitle: "Make the shortlist sooner in London search results",
+    midCtaText:
+      "If buyers are comparing several nearby providers, stronger recent proof can help them choose your business before the next tab opens.",
+    finalCtaTitle: "Ready to build stronger Google review trust in London?",
+    finalCtaText:
+      "Start a London-focused plan built around realistic pacing, borough-level relevance, and clearer proof before prospects enquire.",
+    finalCtaLabel: "Start Your London Plan",
   },
-  {
-    name: "How to Increase Google Reviews",
-    href: "/blog/how-to-increase-google-reviews",
+  "us/new-york": {
+    heroAddition:
+      "In a market where prospects compare fast, stronger recent reviews can help your listing win attention before the next option gets the click.",
+    heroHighlights: [
+      [
+        "Neighborhood relevance",
+        "Support borough and neighborhood comparisons with proof that feels current and specific.",
+      ],
+      [
+        "Faster trust",
+        "Help buyers move from shortlist to enquiry without needing extra reassurance first.",
+      ],
+      [
+        "Search-to-lead support",
+        "Strengthen the trust layer on your profile before the website has to close the gap.",
+      ],
+    ],
+    testimonialIntro:
+      "Common feedback themes from New York businesses that want their Google profile to convert more local intent.",
+    testimonials: [
+      {
+        quote:
+          "We needed the profile to look more current because prospects were deciding before they ever contacted us.",
+        name: "Owner",
+        business: "Dental practice, New York",
+      },
+      {
+        quote:
+          "The city-specific focus matched how people compare businesses block by block here.",
+        name: "Marketing lead",
+        business: "Real estate team, New York",
+      },
+      {
+        quote:
+          "It helped us think about proof and pacing instead of chasing something that looked forced.",
+        name: "Director",
+        business: "Service business, New York",
+      },
+    ],
+    faqTitle: "Questions New York businesses ask before starting",
+    faqIntro:
+      "A short FAQ for businesses that need stronger local trust in one of the fastest comparison markets.",
+    faqItems: [
+      {
+        question: "Does this make sense for borough-based targeting?",
+        answer:
+          "Yes, especially when customers compare providers across Manhattan, Brooklyn, Queens, and nearby areas before they enquire.",
+      },
+      {
+        question: "Is review recency especially important in New York?",
+        answer:
+          "Usually yes. In dense local results, recent and believable feedback often shapes which businesses feel active and worth contacting now.",
+      },
+      {
+        question: "Can this work for clinics, agencies, and home services?",
+        answer:
+          "Yes, those categories often depend on trust signals early in the journey, especially when buyers are narrowing options quickly.",
+      },
+      {
+        question: "Can I use this alongside my current local SEO work?",
+        answer:
+          "Yes, the page and service flow stay the same, so the review-growth plan can sit alongside your existing local search work.",
+      },
+    ],
+    relatedCitySlugs: ["chicago", "boston", "washington"],
+    relatedBlogHrefs: [
+      "/blog/how-to-increase-google-reviews",
+      "/blog/google-review-link-and-qr-code",
+      "/blog/industry-specific-google-review-growth",
+    ],
+    midCtaTitle: "Turn New York comparison traffic into more enquiries",
+    midCtaText:
+      "When buyers are checking several credible options at once, a stronger review profile can make your business easier to choose quickly.",
+    finalCtaTitle: "Ready to improve Google review conversion in New York?",
+    finalCtaText:
+      "Launch a New York-focused plan that supports neighborhood relevance, current proof, and better trust before prospects reach out.",
+    finalCtaLabel: "Start Your New York Plan",
   },
-  {
-    name: "How to Improve Google Rating",
-    href: "/blog/how-to-improve-google-rating",
+  "au/sydney": {
+    heroAddition:
+      "For Sydney businesses competing on quality and reputation, stronger review proof can help the profile do more of the persuasion before the first call.",
+    heroHighlights: [
+      [
+        "Suburb-level fit",
+        "Support how Sydney buyers compare businesses across the CBD and surrounding suburbs.",
+      ],
+      [
+        "Higher booking confidence",
+        "Use current proof to make your business feel easier to trust before a visit or enquiry.",
+      ],
+      [
+        "Natural momentum",
+        "Keep review activity steady so the profile feels polished without looking overworked.",
+      ],
+    ],
+    testimonialIntro:
+      "The type of feedback Sydney businesses care about when review growth needs to support trust, not just visibility.",
+    testimonials: [
+      {
+        quote:
+          "We wanted the profile to feel stronger before people compared us with another local option.",
+        name: "Owner",
+        business: "Health clinic, Sydney",
+      },
+      {
+        quote:
+          "The approach suited a premium service where presentation and trust matter early.",
+        name: "General manager",
+        business: "Hospitality brand, Sydney",
+      },
+      {
+        quote:
+          "It gave us a clearer path for building momentum without making the activity feel unnatural.",
+        name: "Founder",
+        business: "Property services company, Sydney",
+      },
+    ],
+    faqTitle: "Questions Sydney businesses ask before starting",
+    faqIntro:
+      "Relevant answers for local teams trying to improve trust and conversion from search across Sydney.",
+    faqItems: [
+      {
+        question: "Can this support suburb-level targeting in Sydney?",
+        answer:
+          "Yes, the plan can align with the suburbs and service areas you want to support so the review-growth strategy fits local search behavior.",
+      },
+      {
+        question: "Does this help if buyers care about quality before they call?",
+        answer:
+          "Yes, that is often where stronger review proof helps most. It gives prospects more confidence before they commit to an enquiry or booking.",
+      },
+      {
+        question: "Is a gradual review pace better for Sydney businesses?",
+        answer:
+          "Usually yes. A gradual, believable pace tends to support long-term trust better than anything abrupt.",
+      },
+      {
+        question: "Can this work for premium local services?",
+        answer:
+          "Yes, premium and comparison-heavy categories often benefit when the profile looks current, consistent, and easier to trust.",
+      },
+    ],
+    relatedCitySlugs: ["melbourne", "brisbane", "perth"],
+    relatedBlogHrefs: [
+      "/blog/how-to-get-google-reviews",
+      "/blog/sms-and-email-templates-for-google-reviews",
+      "/blog/google-business-profile-ranking-and-reviews",
+    ],
+    midCtaTitle: "Build more booking confidence from Sydney search traffic",
+    midCtaText:
+      "When customers compare quality, convenience, and reputation together, stronger recent proof can help your business win the enquiry first.",
+    finalCtaTitle: "Ready to strengthen your Google review presence in Sydney?",
+    finalCtaText:
+      "Start a Sydney-focused plan built around suburb-level relevance, polished trust signals, and steady review momentum.",
+    finalCtaLabel: "Start Your Sydney Plan",
   },
-];
+};
 
 function getProfile(location: Location) {
-  return cityProfiles[`${location.country}/${location.city}`];
+  const directProfile = cityProfiles[`${location.country}/${location.city}`];
+
+  if (directProfile) {
+    return directProfile;
+  }
+
+  const country = countryMeta[location.country];
+
+  return {
+    intro: `${location.cityName} is a competitive market where businesses need visible trust before customers call, book, or request a quote. Google reviews help local teams look active, dependable, and easier to choose.`,
+    localRelevance: `In ${location.cityName}, ${country.competitiveNote}. ${country.cityDescription}`,
+    businesses: `Popular businesses in ${location.cityName} include restaurants, dentists, real estate agencies, and service providers. ${location.cityName} also has strong demand from ${country.businessFocus} that benefit from more visible review proof.`,
+    whyNeed: `Businesses in ${location.cityName} need more reviews because stronger public feedback reduces hesitation, supports local search visibility, and helps prospects compare providers with more confidence.`,
+    strategy: `A ${location.cityName} review strategy should focus on realistic pacing, useful customer language, and internal links that connect this city page with the wider ${country.countryName} review-growth plan.`,
+    metaTitle: `Get More Google Reviews in ${location.cityName}`,
+    metaDescription: `Google review growth for ${location.cityName} businesses with stronger local trust, better review recency, and clearer support for conversion from search.`,
+  };
+}
+
+function getConversionContent(location: Location) {
+  return conversionContentByCity[`${location.country}/${location.city}`] ?? null;
 }
 
 export function generateStaticParams() {
@@ -383,7 +662,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const profile = getProfile(location);
 
   return buildMetadata({
-    title: `Get More Google Reviews in ${location.cityName}, ${location.countryName} | Local Reviews Boost`,
+    title: `${profile?.metaTitle ?? `Get More Google Reviews in ${location.cityName}`}, ${location.countryName} | Local Reviews Boost`,
     description:
       profile?.metaDescription ??
       `Build stronger Google review visibility in ${location.cityName}, ${location.countryName} with location-based review strategies that support local trust and rankings.`,
@@ -400,8 +679,32 @@ export default function GoogleReviewsPage({ params }: PageProps) {
 
   const profile = getProfile(location);
   const nearbyLocations = getRelatedLocations(location, 2);
+  const countryHub = getCountryEntry(location.country);
+  const conversionContent = getConversionContent(location);
+  const featuredRelatedLocations =
+    conversionContent?.relatedCitySlugs.flatMap((city) => {
+      const entry = getLocation(location.country, city);
 
-  if (!profile) {
+      if (
+        !entry ||
+        nearbyLocations.some((nearbyLocation) => nearbyLocation.href === entry.href)
+      ) {
+        return [];
+      }
+
+      return [entry];
+    }) ?? [];
+  const featuredBlogLinks =
+    conversionContent?.relatedBlogHrefs
+      .map((href) => blogPostEntries.find((post) => post.href === href))
+      .filter(
+        (entry): entry is (typeof blogPostEntries)[number] =>
+          Boolean(entry) &&
+          !blogLinks.some((blogLink) => blogLink.href === entry?.href),
+      ) ??
+    [];
+
+  if (!profile || !countryHub) {
     notFound();
   }
 
@@ -412,6 +715,7 @@ export default function GoogleReviewsPage({ params }: PageProps) {
           <Breadcrumbs
             items={[
               { name: "Home", path: "/" },
+              { name: `${location.countryLabel} Reviews`, path: countryHub.href },
               { name: `${location.cityName} Reviews`, path: location.href },
             ]}
             className="mb-6 text-left"
@@ -431,12 +735,32 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             Business reviews, but the same trust signals now live on your
             Google Business Profile.
           </p>
+          {conversionContent ? (
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-zinc-600">
+              {conversionContent.heroAddition}
+            </p>
+          ) : null}
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/start-order">Start Your Plan</Button>
             <Button href="/#pricing" variant="secondary">
               View pricing
             </Button>
           </div>
+          {conversionContent ? (
+            <div className="mt-10 grid gap-4 text-left sm:grid-cols-3">
+              {conversionContent.heroHighlights.map(([title, description]) => (
+                <article
+                  key={title}
+                  className="rounded-[1.75rem] border border-zinc-200 bg-zinc-50/80 p-5 shadow-[0_20px_40px_-38px_rgba(15,23,42,0.6)]"
+                >
+                  <h2 className="text-base font-semibold text-zinc-950">{title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-zinc-600">
+                    {description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -501,8 +825,15 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                   className="font-semibold text-zinc-950 underline underline-offset-4"
                 >
                   the start-order page
-                </Link>
-                for a tailored plan.
+                </Link>{" "}
+                for a tailored plan, or return to the{" "}
+                <Link
+                  href={countryHub.href}
+                  className="font-semibold text-zinc-950 underline underline-offset-4"
+                >
+                  {location.countryLabel} review hub
+                </Link>{" "}
+                to compare other cities in {location.countryName}.
               </p>
             </div>
           </section>
@@ -550,6 +881,61 @@ export default function GoogleReviewsPage({ params }: PageProps) {
             </div>
           </section>
 
+          {conversionContent ? (
+            <section className="rounded-[2rem] border border-zinc-200 bg-zinc-950 p-8 text-white shadow-[0_24px_60px_-36px_rgba(15,23,42,0.7)]">
+              <h2 className="text-3xl font-semibold tracking-tight">
+                {conversionContent.midCtaTitle}
+              </h2>
+              <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-300">
+                {conversionContent.midCtaText}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button href="/start-order" variant="secondary">
+                  Start Your Plan
+                </Button>
+                <Link
+                  href="/#pricing"
+                  className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-950"
+                >
+                  View pricing
+                </Link>
+              </div>
+            </section>
+          ) : null}
+
+          {conversionContent ? (
+            <section className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-6 shadow-[0_22px_50px_-42px_rgba(15,23,42,0.55)] sm:p-8">
+              <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500">
+                <MessageSquareQuote aria-hidden="true" className="h-4 w-4" />
+                Testimonials
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950">
+                What local businesses want from a review plan
+              </h2>
+              <p className="mt-4 max-w-3xl text-lg leading-8 text-zinc-600">
+                {conversionContent.testimonialIntro}
+              </p>
+              <div className="mt-8 grid gap-6 md:grid-cols-3">
+                {conversionContent.testimonials.map((testimonial) => (
+                  <article
+                    key={`${testimonial.name}-${testimonial.business}`}
+                    className="rounded-[1.75rem] border border-zinc-200 bg-zinc-50/80 p-6"
+                  >
+                    <p className="text-base leading-7 text-zinc-700">
+                      "{testimonial.quote}"
+                    </p>
+                    <p className="mt-5 text-sm font-semibold text-zinc-950">
+                      {testimonial.name}
+                    </p>
+                    <p className="mt-1 text-sm text-zinc-500">
+                      {testimonial.business}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="rounded-[2rem] border border-zinc-200 bg-zinc-50 p-8">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-950">
               Build a stronger {location.cityName} review presence
@@ -566,10 +952,10 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 </Link>{" "}
                 and{" "}
                 <Link
-                  href={blogLinks[2].href}
+                  href={blogLinks[3].href}
                   className="font-semibold text-zinc-950 underline underline-offset-4"
                 >
-                  {blogLinks[2].name}
+                  {blogLinks[3].name}
                 </Link>{" "}
                 for process guidance, then compare{" "}
                 <Link
@@ -585,10 +971,46 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                 >
                   {serviceLinks[3].name}
                 </Link>{" "}
-                if you want a clearer execution path.
+                if you want a clearer execution path. For wider market coverage,
+                use the{" "}
+                <Link
+                  href={countryHub.href}
+                  className="font-semibold text-zinc-950 underline underline-offset-4"
+                >
+                  {location.countryLabel} hub page
+                </Link>{" "}
+                to browse related city pages.
               </p>
+              {conversionContent && featuredRelatedLocations.length > 0 ? (
+                <p>
+                  You can also compare{" "}
+                  {featuredRelatedLocations.map((relatedLocation, index) => (
+                    <span key={relatedLocation.href}>
+                      {index > 0 && index === featuredRelatedLocations.length - 1
+                        ? " and "
+                        : index > 0
+                          ? ", "
+                          : ""}
+                      <Link
+                        href={relatedLocation.href}
+                        className="font-semibold text-zinc-950 underline underline-offset-4"
+                      >
+                        {relatedLocation.cityName}
+                      </Link>
+                    </span>
+                  ))}{" "}
+                  to see how review pressure shifts across comparable markets.
+                </p>
+              ) : null}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href={countryHub.href}
+                className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+              >
+                <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                {location.countryLabel} Review Hub
+              </Link>
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -619,6 +1041,26 @@ export default function GoogleReviewsPage({ params }: PageProps) {
                   {relatedLocation.cityName} Reviews
                 </Link>
               ))}
+              {featuredBlogLinks.map((link) => (
+                <Link
+                  key={`${link.href}-featured`}
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                >
+                  <NotebookText aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                  {link.title}
+                </Link>
+              ))}
+              {featuredRelatedLocations.map((relatedLocation) => (
+                <Link
+                  key={`${relatedLocation.href}-featured`}
+                  href={relatedLocation.href}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-zinc-300 hover:bg-zinc-100"
+                >
+                  <MapPinned aria-hidden="true" className="h-4 w-4 text-zinc-500" />
+                  {relatedLocation.cityName} Reviews
+                </Link>
+              ))}
             </div>
           </section>
         </div>
@@ -626,20 +1068,28 @@ export default function GoogleReviewsPage({ params }: PageProps) {
 
       <FAQ
         className="bg-zinc-50"
-        intro={`Answers for ${location.cityName} businesses planning location-based Google review growth.`}
+        title={
+          conversionContent?.faqTitle ?? "Frequently asked questions"
+        }
+        intro={
+          conversionContent?.faqIntro ??
+          `Answers for ${location.cityName} businesses planning location-based Google review growth.`
+        }
+        items={conversionContent?.faqItems}
       />
 
       <section className="px-6 pb-24 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-[2rem] bg-zinc-950 px-8 py-14 text-center text-white shadow-[0_28px_70px_-32px_rgba(15,23,42,0.75)]">
           <h2 className="text-4xl font-semibold tracking-tight">
-            Ready to grow your Google reviews in {location.cityName}?
+            {conversionContent?.finalCtaTitle ??
+              `Ready to grow your Google reviews in ${location.cityName}?`}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
-            Launch a city-focused review growth plan with realistic pacing,
-            readable customer proof, and practical support.
+            {conversionContent?.finalCtaText ??
+              "Launch a city-focused review growth plan with realistic pacing, readable customer proof, and practical support."}
           </p>
           <Button href="/start-order" variant="secondary" className="mt-8">
-            Improve Your Review Presence
+            {conversionContent?.finalCtaLabel ?? "Improve Your Review Presence"}
           </Button>
         </div>
       </section>
