@@ -77,14 +77,14 @@ export default function Header() {
               />
             </button>
 
-            <div className="pointer-events-none invisible absolute right-0 top-full w-[min(34rem,calc(100vw-2rem))] pt-4 opacity-0 transition duration-150 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
-              <div className="grid gap-5 rounded-3xl border border-zinc-200/80 bg-white/95 p-5 shadow-2xl shadow-zinc-950/10 sm:grid-cols-3">
+            <div className="pointer-events-none invisible absolute right-0 top-full w-[min(68rem,calc(100vw-2rem))] pt-4 opacity-0 transition duration-150 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
+              <div className="grid max-h-[70vh] gap-5 overflow-y-auto rounded-3xl border border-zinc-200/80 bg-white/95 p-5 shadow-2xl shadow-zinc-950/10 md:grid-cols-3 lg:grid-cols-[1.35fr_1fr_1fr]">
                 {locationGroups.map((group) => (
                   <div key={group.country}>
                     <p className="mb-3 text-xs font-bold uppercase tracking-wide text-zinc-500">
                       {group.countryLabel}
                     </p>
-                    <div className="space-y-1">
+                    <div className="grid gap-1 lg:grid-cols-2">
                       {group.links.map((location) => (
                         <Link
                           key={location.href}
@@ -149,7 +149,7 @@ export default function Header() {
                 id="mobile-location-links"
                 className={`${isLocationsOpen ? "grid-rows-[1fr] border-t border-zinc-200" : "grid-rows-[0fr]"} grid overflow-hidden transition-[grid-template-rows] duration-200`}
               >
-                <div className="min-h-0">
+                <div className="min-h-0 max-h-[60vh] overflow-y-auto">
                   <div className="grid gap-5 p-4">
                     {locationGroups.map((group) => (
                       <div key={group.country}>
