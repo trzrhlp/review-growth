@@ -44,6 +44,7 @@ export const locations = {
     "orlando",
     "charlotte",
     "nashville",
+    "pittsburgh",
   ],
   uk: [
     "london",
