@@ -45,14 +45,6 @@ canvas {
   max-width: 100%;
 }
 
-.logo {
-  display: block;
-  height: auto;
-  max-height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
 .footer {
   width: 100%;
   overflow-x: hidden;

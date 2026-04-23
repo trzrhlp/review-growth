@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { locationGroups } from "@/lib/locations";
 
 export default function Header() {
@@ -25,17 +24,15 @@ export default function Header() {
       >
         <Link
           href="/"
-          className="flex h-full items-center"
-          aria-label="LocalReviewsBoost home"
+          className="flex h-16 items-center gap-3 whitespace-nowrap"
+          aria-label="Local Reviews Boost home"
         >
-          <Image
-            src="/logo.png?v=3"
-            alt="Logo"
-            width={140}
-            height={50}
-            priority
-            className="logo"
-          />
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white">
+            <MapPin aria-hidden="true" className="h-5 w-5" />
+          </span>
+          <span className="shrink-0 text-lg leading-none font-bold tracking-tight text-zinc-950 sm:text-xl">
+            Local Reviews Boost
+          </span>
         </Link>
 
         <button
